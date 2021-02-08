@@ -1,0 +1,141 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Avatar_WholeBody
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: TemplateCharacter_GEO
+    m_Weight: 1
+  - m_Path: TemplateCharacter_GEO/Head_Static_GEO
+    m_Weight: 1
+  - m_Path: TemplateCharacter_GEO/L_Arm_Static_GEO
+    m_Weight: 1
+  - m_Path: TemplateCharacter_GEO/L_Leg_Static_GEO
+    m_Weight: 1
+  - m_Path: TemplateCharacter_GEO/R_Arm_Static_Geo
+    m_Weight: 1
+  - m_Path: TemplateCharacter_GEO/R_Leg_Static_GEO
+    m_Weight: 1
+  - m_Path: TemplateCharacter_GEO/Torso_Static_GEO
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Pelvis_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Pelvis_Joint/L_Hip_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Pelvis_Joint/L_Hip_Joint/L_Knee_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Pelvis_Joint/L_Hip_Joint/L_Knee_Joint/L_Ankle_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Pelvis_Joint/L_Hip_Joint/L_Knee_Joint/L_Ankle_Joint/L_Ball_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Pelvis_Joint/L_Hip_Joint/L_Knee_Joint/L_Ankle_Joint/L_Ball_Joint/L_Toe_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Pelvis_Joint/R_Hip_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Pelvis_Joint/R_Hip_Joint/R_Knee_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Pelvis_Joint/R_Hip_Joint/R_Knee_Joint/R_Ankle_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Pelvis_Joint/R_Hip_Joint/R_Knee_Joint/R_Ankle_Joint/R_Ball_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Pelvis_Joint/R_Hip_Joint/R_Knee_Joint/R_Ankle_Joint/R_Ball_Joint/R_Toe_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/L_Clavicale_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/L_Clavicale_Joint/L_Shoulder_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/L_Clavicale_Joint/L_Shoulder_Joint/L_Elbow_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/L_Clavicale_Joint/L_Shoulder_Joint/L_Elbow_Joint/L_Wrist_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/L_Clavicale_Joint/L_Shoulder_Joint/L_Elbow_Joint/L_Wrist_Joint/L_index_01_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/L_Clavicale_Joint/L_Shoulder_Joint/L_Elbow_Joint/L_Wrist_Joint/L_index_01_Joint/L_index_02_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/L_Clavicale_Joint/L_Shoulder_Joint/L_Elbow_Joint/L_Wrist_Joint/L_index_01_Joint/L_index_02_Joint/L_Index_03_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/L_Clavicale_Joint/L_Shoulder_Joint/L_Elbow_Joint/L_Wrist_Joint/L_Little_01
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/L_Clavicale_Joint/L_Shoulder_Joint/L_Elbow_Joint/L_Wrist_Joint/L_Little_01/L_Little_02
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/L_Clavicale_Joint/L_Shoulder_Joint/L_Elbow_Joint/L_Wrist_Joint/L_Little_01/L_Little_02/L_Little_03
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/L_Clavicale_Joint/L_Shoulder_Joint/L_Elbow_Joint/L_Wrist_Joint/L_Middle_01_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/L_Clavicale_Joint/L_Shoulder_Joint/L_Elbow_Joint/L_Wrist_Joint/L_Middle_01_Joint/L_Middle_02_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/L_Clavicale_Joint/L_Shoulder_Joint/L_Elbow_Joint/L_Wrist_Joint/L_Middle_01_Joint/L_Middle_02_Joint/L_Middle_03_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/L_Clavicale_Joint/L_Shoulder_Joint/L_Elbow_Joint/L_Wrist_Joint/L_Ring_01
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/L_Clavicale_Joint/L_Shoulder_Joint/L_Elbow_Joint/L_Wrist_Joint/L_Ring_01/L_Ring_02
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/L_Clavicale_Joint/L_Shoulder_Joint/L_Elbow_Joint/L_Wrist_Joint/L_Ring_01/L_Ring_02/L_Ring_03
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/L_Clavicale_Joint/L_Shoulder_Joint/L_Elbow_Joint/L_Wrist_Joint/L_Thumb_01_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/L_Clavicale_Joint/L_Shoulder_Joint/L_Elbow_Joint/L_Wrist_Joint/L_Thumb_01_Joint/L_Thumb_02_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/L_Clavicale_Joint/L_Shoulder_Joint/L_Elbow_Joint/L_Wrist_Joint/L_Thumb_01_Joint/L_Thumb_02_Joint/L_Thumb_03_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/Neck_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/Neck_Joint/Head_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/R_Clavicale_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/R_Clavicale_Joint/R_Shoulder_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/R_Clavicale_Joint/R_Shoulder_Joint/R_Elbow_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/R_Clavicale_Joint/R_Shoulder_Joint/R_Elbow_Joint/R_Wrist_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/R_Clavicale_Joint/R_Shoulder_Joint/R_Elbow_Joint/R_Wrist_Joint/R_index_01_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/R_Clavicale_Joint/R_Shoulder_Joint/R_Elbow_Joint/R_Wrist_Joint/R_index_01_Joint/R_index_02_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/R_Clavicale_Joint/R_Shoulder_Joint/R_Elbow_Joint/R_Wrist_Joint/R_index_01_Joint/R_index_02_Joint/R_Index_03_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/R_Clavicale_Joint/R_Shoulder_Joint/R_Elbow_Joint/R_Wrist_Joint/R_Little_01
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/R_Clavicale_Joint/R_Shoulder_Joint/R_Elbow_Joint/R_Wrist_Joint/R_Little_01/R_Little_02
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/R_Clavicale_Joint/R_Shoulder_Joint/R_Elbow_Joint/R_Wrist_Joint/R_Little_01/R_Little_02/R_Little_03
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/R_Clavicale_Joint/R_Shoulder_Joint/R_Elbow_Joint/R_Wrist_Joint/R_Middle_01_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/R_Clavicale_Joint/R_Shoulder_Joint/R_Elbow_Joint/R_Wrist_Joint/R_Middle_01_Joint/R_Middle_02_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/R_Clavicale_Joint/R_Shoulder_Joint/R_Elbow_Joint/R_Wrist_Joint/R_Middle_01_Joint/R_Middle_02_Joint/R_Middle_03_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/R_Clavicale_Joint/R_Shoulder_Joint/R_Elbow_Joint/R_Wrist_Joint/R_Ring_01
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/R_Clavicale_Joint/R_Shoulder_Joint/R_Elbow_Joint/R_Wrist_Joint/R_Ring_01/R_Ring_02
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/R_Clavicale_Joint/R_Shoulder_Joint/R_Elbow_Joint/R_Wrist_Joint/R_Ring_01/R_Ring_02/R_Ring_03
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/R_Clavicale_Joint/R_Shoulder_Joint/R_Elbow_Joint/R_Wrist_Joint/R_Thumb_01_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/R_Clavicale_Joint/R_Shoulder_Joint/R_Elbow_Joint/R_Wrist_Joint/R_Thumb_01_Joint/R_Thumb_02_Joint
+    m_Weight: 1
+  - m_Path: TemplateCharacter_Rig/Root_Joint/Centre_Joint/Spine_1_joint/Spine_2_joint/Chest_Joint/R_Clavicale_Joint/R_Shoulder_Joint/R_Elbow_Joint/R_Wrist_Joint/R_Thumb_01_Joint/R_Thumb_02_Joint/R_Thumb_03_Joint
+    m_Weight: 1
