@@ -2,8 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Movement Data", menuName = "IND/Player/Movement Data")]
-public class MovementData : ScriptableObject
+namespace IND.Player
 {
-    public float standingJogSpeed;
+    [CreateAssetMenu(fileName = "Movement Data", menuName = "IND/Player/Movement Data")]
+    public class MovementData : ScriptableObject
+    {
+        public float standingJogSpeed;
+        public float aimRotationSpeed = 20f;
+
+    }
 }

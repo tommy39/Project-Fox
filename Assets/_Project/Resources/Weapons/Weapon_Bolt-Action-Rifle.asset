@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29ee000b648ea0f4a8160af8d395d36b, type: 3}
+  m_Name: Weapon_Bolt-Action-Rifle
+  m_EditorClassIdentifier: 
+  weaponName: Bolt Action Rifle
+  modelPrefab: {fileID: 1367974431218891808, guid: 89fdcd3e729e2704f825f71603314113, type: 3}
+  weaponAnimID: 0
