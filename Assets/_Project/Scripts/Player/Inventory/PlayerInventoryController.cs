@@ -10,32 +10,19 @@ namespace IND.Player
         public WeaponData weaponData;
         public WeaponController weaponController;
 
-        public bool isAiming = false;
-        [HideInInspector] public Transform aimTarget;
-
         public Transform rightHandTransform;
-        public LayerMask aimLayerMasks;
 
         private PlayerAnimController animController;
-        private Camera cam;
-
-       private Ray rayCastPoint;
-       private RaycastHit rayHitPoint;
+        private PlayerAimController aimController;
 
         private void Awake()
         {
             animController = GetComponent<PlayerAnimController>();
-            cam = FindObjectOfType<Camera>();
         }
 
         private void Start()
         {
-            if(aimTarget == null)
-            {
-                GameObject aimTargetGeo = new GameObject();
-                aimTargetGeo.name = "Aim Target " + "For " + gameObject.name;
-                aimTarget = aimTargetGeo.transform;
-            }
+            aimController = GetComponent<PlayerAimController>();
 
             if (weaponData != null)
             {
@@ -45,7 +32,7 @@ namespace IND.Player
 
         private void Update()
         {
-            HandleAimState();
+            HandleShooting();
         }
 
         private void SpawnWeapon()
@@ -59,41 +46,16 @@ namespace IND.Player
             weaponController = geo.GetComponent<WeaponController>();
         }
 
-        private void HandleAimState()
+        private void HandleShooting()
         {
-            if (isAiming == false)
-            {
-                if (Input.GetMouseButtonDown(1))
-                {
-                    ToggleAimState(true);
-                }
-            }
-            else
-            {
-                UpdateAimTargetPosition();
+            if (aimController.isAiming == false)
+                return;
 
-                if (Input.GetMouseButtonUp(1))
-                {
-                    ToggleAimState(false);
-                }
+            if(Input.GetMouseButtonDown(0))
+            {
+                weaponController.FireWeapon();
             }
         }
 
-        private void UpdateAimTargetPosition()
-        {
-            rayCastPoint = cam.ScreenPointToRay(Input.mousePosition);
-            Debug.Log(1);
-            if (Physics.Raycast(rayCastPoint, out rayHitPoint, 100f, aimLayerMasks))
-            {
-                Debug.Log(2);
-                aimTarget.transform.position = rayHitPoint.point;
-            }
-        }
-
-        private void ToggleAimState(bool val)
-        {
-            isAiming = val;
-            animController.SetAnimBool(PlayerAnimatorStatics.isAimingAnimBool, val);
-        }
     }
 }

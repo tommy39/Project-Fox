@@ -11,5 +11,6 @@ namespace IND.Weapons
         public string weaponName;
         public GameObject modelPrefab;
         public int weaponAnimID;
+        public float firingWeaponAnimTimer = 0.1f;
     }
 }

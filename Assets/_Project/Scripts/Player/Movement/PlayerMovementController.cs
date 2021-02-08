@@ -9,10 +9,15 @@ namespace IND.Player
         public MovementData data;
         public PostureState postureState;
 
+        public CapsuleCollider standingCollider;
+        public CapsuleCollider crouchedCollider;
+        public CapsuleCollider proneCollider;
+
         private Rigidbody rigidBody;
         private Camera cam;
         private PlayerAnimController animController;
         private PlayerInventoryController inventoryController;
+        private PlayerAimController aimController;
 
         private Vector3 moveInput;
         private Vector3 camForward;
@@ -33,6 +38,8 @@ namespace IND.Player
         #endregion
 
         #region AIM Rotation
+        private Vector3 adjustedAimPos;
+        private float aimPosAdjustmentAmount = 1f;
         private Vector3 targetRotPoint;
         private Quaternion targetRotation;
         #endregion
@@ -44,13 +51,24 @@ namespace IND.Player
             cam = FindObjectOfType<Camera>();
             animController = GetComponent<PlayerAnimController>();
             inventoryController = GetComponent<PlayerInventoryController>();
+            aimController = GetComponent<PlayerAimController>();
+        }
+
+        private void Start()
+        {
+            ChangePostureToStanding();
+        }
+
+        private void Update()
+        {
+            HandlePostureInput();
         }
 
         private void FixedUpdate()
         {
             HandleMovementInputs();
             CheckMovementInputs();
-            HandleAimRotation();
+            HandleRotation();
 
             camForward = Vector3.Scale(cam.transform.up, new Vector3(1, 0, 1)).normalized;
             move = verticalInput * camForward + horizontalInput * cam.transform.right;
@@ -65,20 +83,83 @@ namespace IND.Player
 
 
             moveInput = new Vector3(horizontalInput, 0f, verticalInput);
-            moveVelocity = moveInput * data.standingJogSpeed;
+            moveVelocity = moveInput * GetMovementSpeed();
             rigidBody.velocity = moveVelocity;
 
             UpdateMovementAnims();
         }
 
-        private void HandleAimRotation()
+        private float GetMovementSpeed()
         {
-            if (inventoryController.isAiming == false)
+            switch (postureState)
+            {
+                case PostureState.STANDING:
+                    return data.standingJogSpeed;
+                case PostureState.CROUCHED:
+                    return data.crouchedMovementSpeed;
+                case PostureState.PRONE:
+                    return data.proneMovementSpeed;
+            }
+            return 0;
+        }
+
+        private void HandleRotation()
+        {
+            if (isPressingMovementKeys == false && aimController.isAiming == false)
                 return;
 
-            targetRotPoint = new Vector3(inventoryController.aimTarget.transform.position.x, transform.position.y, inventoryController.aimTarget.transform.position.z) - transform.position;
+            if (aimController.isAiming == false)
+            {
+                aimController.aimTarget.position = GetMovementAimPosition();   
+            }
+
+       
+
+            targetRotPoint = new Vector3(aimController.aimTarget.transform.position.x, transform.position.y, aimController.aimTarget.transform.position.z) - transform.position;
             targetRotation = Quaternion.LookRotation(targetRotPoint, Vector3.up);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * data.aimRotationSpeed);
+        }
+
+        private Vector3 GetMovementAimPosition()
+        {
+            if (leftMovementInput == true && forwardMovementInput == true) //Forward Left
+            {
+                adjustedAimPos = new Vector3(transform.position.x - aimPosAdjustmentAmount, 0f, transform.position.z + aimPosAdjustmentAmount);
+            }
+            else if (leftMovementInput == true && backwardsMovementInput == true) //Backward Left
+            {
+                adjustedAimPos = new Vector3(transform.position.x - aimPosAdjustmentAmount, 0f, transform.position.z - aimPosAdjustmentAmount);
+            }
+            else if (rightMovementInput == true && forwardMovementInput == true) //Forward Right
+            {
+                adjustedAimPos = new Vector3(transform.position.x + aimPosAdjustmentAmount, 0f, transform.position.z + aimPosAdjustmentAmount);
+            }
+            else if (leftMovementInput == true && backwardsMovementInput == true) //Backward Right
+            {
+                adjustedAimPos = new Vector3(transform.position.x + aimPosAdjustmentAmount, 0f, transform.position.z - aimPosAdjustmentAmount);
+            }
+            else if (leftMovementInput == true) //Left
+            {
+                adjustedAimPos = new Vector3(transform.position.x - aimPosAdjustmentAmount, 0f, transform.position.z);
+            }
+            else if (rightMovementInput == true) //Right
+            {
+                adjustedAimPos = new Vector3(transform.position.x + aimPosAdjustmentAmount, 0f, transform.position.z);
+            }
+            else if (forwardMovementInput == true) //Forward
+            {
+                adjustedAimPos = new Vector3(transform.position.x, 0f, transform.position.z + aimPosAdjustmentAmount);
+            }
+            else if (backwardsMovementInput == true) //Back
+            {
+                adjustedAimPos = new Vector3(transform.position.x, 0f, transform.position.z - aimPosAdjustmentAmount);
+            }
+            else
+            {
+                adjustedAimPos = inventoryController.transform.position; //Return In Front Of the Idle Position 
+            }
+
+            return adjustedAimPos;
         }
 
         private void HandleMovementInputs()
@@ -165,6 +246,61 @@ namespace IND.Player
 
             horizontallNormalizedMoveAmount = localMove.x;
             verticalNormalizedMoveAmount = localMove.z;
+        }
+
+        private void HandlePostureInput()
+        {
+            if(Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                ToggleCrouchPosture();
+            }
+            else if(Input.GetKeyDown(KeyCode.Z))
+            {
+                TogglePronePosture();
+            }
+        }
+
+        private void ToggleCrouchPosture()
+        {
+            if(postureState == PostureState.CROUCHED)
+            {
+                ChangePostureToStanding();
+                return;
+            }
+
+            crouchedCollider.enabled = true;
+            proneCollider.enabled = false;
+            standingCollider.enabled = false;
+
+            postureState = PostureState.CROUCHED;
+            animController.SetAnimInt(PlayerAnimatorStatics.postureStateInt, 1);
+        }
+
+        private void TogglePronePosture()
+        {
+            if(postureState == PostureState.PRONE)
+            {
+                ChangePostureToStanding();
+                return;
+            }
+
+
+            crouchedCollider.enabled = false;
+            proneCollider.enabled = true;
+            standingCollider.enabled = false;
+
+            postureState = PostureState.PRONE;
+            animController.SetAnimInt(PlayerAnimatorStatics.postureStateInt, 2);
+        }
+
+        private void ChangePostureToStanding()
+        {
+            postureState = PostureState.STANDING;
+            animController.SetAnimInt(PlayerAnimatorStatics.postureStateInt, 0);
+
+            crouchedCollider.enabled = false;
+            proneCollider.enabled = false;
+            standingCollider.enabled = true;
         }
     }
 }

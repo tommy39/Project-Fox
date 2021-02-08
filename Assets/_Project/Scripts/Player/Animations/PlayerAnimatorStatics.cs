@@ -8,6 +8,7 @@ namespace IND.Player
     {
         public static int verticalMovementInt;
         public static int horizontalMovementInt;
+        public static int postureStateInt;
 
         public static int isAimingAnimBool;
         public static int isFiringAnimBool;
@@ -24,6 +25,7 @@ namespace IND.Player
 
             horizontalMovementInt = Animator.StringToHash("Horizontal");
             verticalMovementInt = Animator.StringToHash("Vertical");
+            postureStateInt = Animator.StringToHash("PostureState");
 
             isFiringAnimBool = Animator.StringToHash("IsFiring");
             isAimingAnimBool = Animator.StringToHash("IsAiming");
