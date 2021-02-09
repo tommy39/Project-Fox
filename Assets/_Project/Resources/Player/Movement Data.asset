@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Movement Data
   m_EditorClassIdentifier: 
   standingJogSpeed: 5
+  sprintSpeed: 7.2
   crouchedMovementSpeed: 3
   proneMovementSpeed: 1
-  aimRotationSpeed: 5
+  aimRotationSpeed: 20

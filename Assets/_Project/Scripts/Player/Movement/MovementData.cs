@@ -8,6 +8,7 @@ namespace IND.Player
     public class MovementData : ScriptableObject
     {
         public float standingJogSpeed;
+        public float sprintSpeed = 15f;
         public float crouchedMovementSpeed;
         public float proneMovementSpeed;
         public float aimRotationSpeed = 20f;

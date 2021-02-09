@@ -12,5 +12,8 @@ namespace IND.Weapons
         public GameObject modelPrefab;
         public int weaponAnimID;
         public float firingWeaponAnimTimer = 0.1f;
+        public float weaponDamage = 100f;
+        public float reloadDuration = 1f;
+        public int maxMagazineAmmo = 5;
     }
 }

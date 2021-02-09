@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using IND.UI;
 using IND.Weapons;
 
 namespace IND.Player
@@ -11,30 +12,48 @@ namespace IND.Player
         public bool isAiming = false;
         public LayerMask aimLayerMasks;
         [SerializeField] private GameObject aimTargetPrefab;
+        [SerializeField] private GameObject aimTargetLinePrefab;
         [HideInInspector] public Transform aimTarget;
+        private LineRenderer aimTargetLineRenderer;
+        private MeshRenderer aimTargetMeshRenderer;
 
         private PlayerInventoryController inventoryController;
+        private PlayerMovementController movementController;
         private PlayerAnimController animController;
+        private AimCursorUIManager aimCursorUI;
         private Camera cam;
 
         private Ray rayCastPoint;
         private RaycastHit rayHitPoint;
+
 
         private void Awake()
         {
             inventoryController = GetComponent<PlayerInventoryController>();
             cam = FindObjectOfType<Camera>();
             animController = GetComponent<PlayerAnimController>();
+            movementController = GetComponent<PlayerMovementController>();
+            aimCursorUI = FindObjectOfType<AimCursorUIManager>();
         }
 
         private void Start()
         {
             if (aimTarget == null)
             {
-                GameObject aimTargetGeo = new GameObject();
+                GameObject aimTargetGeo = Instantiate(aimTargetPrefab);
                 aimTargetGeo.name = "Aim Target " + "For " + gameObject.name;
                 aimTarget = aimTargetGeo.transform;
             }
+
+            if(aimTargetLineRenderer == null)
+            {
+                GameObject geo = Instantiate(aimTargetLinePrefab);
+                aimTargetLineRenderer = geo.GetComponent<LineRenderer>();
+
+            }
+
+            aimTargetMeshRenderer = aimTarget.gameObject.GetComponentInChildren<MeshRenderer>();
+            ToggleAimState(false);
         }
 
         private void Update()
@@ -44,6 +63,11 @@ namespace IND.Player
 
         private void HandleAimState()
         {
+            if (isAiming == false && movementController.isSprinting == true)
+                return;
+
+            aimCursorUI.UpdatePosition(aimTarget.position);
+
             if (isAiming == false)
             {
                 if (Input.GetMouseButtonDown(1))
@@ -53,7 +77,14 @@ namespace IND.Player
             }
             else
             {
+                if(movementController.isSprinting == true)
+                {
+                    ToggleAimState(false);
+                    return;
+                }
+
                 UpdateAimTargetPosition();
+                UpdateAimLineRender();
 
                 if (Input.GetMouseButtonUp(1))
                 {
@@ -71,10 +102,19 @@ namespace IND.Player
             }
         }
 
+        private void UpdateAimLineRender()
+        {
+            aimTargetLineRenderer.SetPosition(0, inventoryController.weaponController.shootpoint.position);
+            aimTargetLineRenderer.SetPosition(1, aimTarget.position);
+        }
+
         private void ToggleAimState(bool val)
         {
             isAiming = val;
             animController.SetAnimBool(PlayerAnimatorStatics.isAimingAnimBool, val);
+            aimTargetMeshRenderer.gameObject.SetActive(val);
+            aimTargetLineRenderer.gameObject.SetActive(val);
+            aimCursorUI.gameObject.SetActive(val);
         }
     }
 }

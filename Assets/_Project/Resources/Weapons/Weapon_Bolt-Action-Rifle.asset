@@ -15,3 +15,7 @@ MonoBehaviour:
   weaponName: Bolt Action Rifle
   modelPrefab: {fileID: 1367974431218891808, guid: 89fdcd3e729e2704f825f71603314113, type: 3}
   weaponAnimID: 0
+  firingWeaponAnimTimer: 0.1
+  weaponDamage: 100
+  reloadDuration: 1.8
+  maxMagazineAmmo: 5

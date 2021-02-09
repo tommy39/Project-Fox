@@ -32,7 +32,6 @@ namespace IND.Player
 
         private void Update()
         {
-            HandleShooting();
         }
 
         private void SpawnWeapon()
@@ -44,17 +43,6 @@ namespace IND.Player
             geo.transform.localRotation = Quaternion.identity;
 
             weaponController = geo.GetComponent<WeaponController>();
-        }
-
-        private void HandleShooting()
-        {
-            if (aimController.isAiming == false)
-                return;
-
-            if(Input.GetMouseButtonDown(0))
-            {
-                weaponController.FireWeapon();
-            }
         }
 
     }

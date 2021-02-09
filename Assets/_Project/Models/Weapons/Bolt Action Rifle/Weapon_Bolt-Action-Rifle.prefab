@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: 5d0fc83dd085a314da58e7c55ba9b64e, type: 2}
   muzzleFlashController: {fileID: 8744044112609654385}
+  shootpoint: {fileID: 1396541888337788319}
 --- !u!1 &1367974431379680430
 GameObject:
   m_ObjectHideFlags: 0
@@ -75,6 +76,7 @@ Transform:
   m_Children:
   - {fileID: 1546630239086975761}
   - {fileID: 8637505096582000928}
+  - {fileID: 1396541888337788319}
   m_Father: {fileID: 1367974431218891811}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -5.199, y: 134.45, z: 48.154}
@@ -108,6 +110,36 @@ Transform:
   - {fileID: 8744044112750432903}
   m_Father: {fileID: 1367974431379680425}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &9159845179870389817
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1396541888337788319}
+  m_Layer: 0
+  m_Name: Shootpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1396541888337788319
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9159845179870389817}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.048, z: 1.082}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1367974431379680425}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1367974431730007290
 PrefabInstance:

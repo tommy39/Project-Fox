@@ -8,6 +8,7 @@ namespace IND.Player
     {
         public MovementData data;
         public PostureState postureState;
+        [HideInInspector] public bool isSprinting = false;
 
         public CapsuleCollider standingCollider;
         public CapsuleCollider crouchedCollider;
@@ -18,6 +19,7 @@ namespace IND.Player
         private PlayerAnimController animController;
         private PlayerInventoryController inventoryController;
         private PlayerAimController aimController;
+
 
         private Vector3 moveInput;
         private Vector3 camForward;
@@ -61,6 +63,7 @@ namespace IND.Player
 
         private void Update()
         {
+            HandleSprintInput();
             HandlePostureInput();
         }
 
@@ -89,8 +92,50 @@ namespace IND.Player
             UpdateMovementAnims();
         }
 
+        private void HandleSprintInput()
+        {
+
+            if (isSprinting == false)
+            {
+
+                if (postureState != PostureState.STANDING)
+                {
+                    return;
+                }
+
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
+                    ToggleSprint(true);
+                }
+            }
+            else
+            {
+                if (postureState != PostureState.STANDING)
+                {
+                    ToggleSprint(false);
+                    return;
+                }
+
+                if (Input.GetKeyUp(KeyCode.LeftShift))
+                {
+                    ToggleSprint(false);
+                }
+            }
+        }
+
+        private void ToggleSprint(bool val)
+        {
+            isSprinting = val;
+            animController.SetAnimBool(PlayerAnimatorStatics.isSprintingAnimBool, val);
+        }
+
         private float GetMovementSpeed()
         {
+            if (isSprinting == true)
+            {
+                return data.sprintSpeed;
+            }
+
             switch (postureState)
             {
                 case PostureState.STANDING:
@@ -110,10 +155,10 @@ namespace IND.Player
 
             if (aimController.isAiming == false)
             {
-                aimController.aimTarget.position = GetMovementAimPosition();   
+                aimController.aimTarget.position = GetMovementAimPosition();
             }
 
-       
+
 
             targetRotPoint = new Vector3(aimController.aimTarget.transform.position.x, transform.position.y, aimController.aimTarget.transform.position.z) - transform.position;
             targetRotation = Quaternion.LookRotation(targetRotPoint, Vector3.up);
@@ -250,11 +295,11 @@ namespace IND.Player
 
         private void HandlePostureInput()
         {
-            if(Input.GetKeyDown(KeyCode.LeftControl))
+            if (Input.GetKeyDown(KeyCode.LeftControl))
             {
                 ToggleCrouchPosture();
             }
-            else if(Input.GetKeyDown(KeyCode.Z))
+            else if (Input.GetKeyDown(KeyCode.Z))
             {
                 TogglePronePosture();
             }
@@ -262,7 +307,7 @@ namespace IND.Player
 
         private void ToggleCrouchPosture()
         {
-            if(postureState == PostureState.CROUCHED)
+            if (postureState == PostureState.CROUCHED)
             {
                 ChangePostureToStanding();
                 return;
@@ -278,7 +323,7 @@ namespace IND.Player
 
         private void TogglePronePosture()
         {
-            if(postureState == PostureState.PRONE)
+            if (postureState == PostureState.PRONE)
             {
                 ChangePostureToStanding();
                 return;
