@@ -19,3 +19,5 @@ MonoBehaviour:
   weaponDamage: 100
   reloadDuration: 1.8
   maxMagazineAmmo: 5
+  weaponDiagonalIcon: {fileID: 21300000, guid: 4d88e9f466277b24487cd6bd93a7f47d, type: 3}
+  weaponHorizontalIcon: {fileID: 21300000, guid: fc67750b003c6294a91da2bf87a84250, type: 3}

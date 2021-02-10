@@ -15,5 +15,8 @@ namespace IND.Weapons
         public float weaponDamage = 100f;
         public float reloadDuration = 1f;
         public int maxMagazineAmmo = 5;
+        public Sprite weaponDiagonalIcon;
+        public Sprite weaponHorizontalIcon;
+
     }
 }

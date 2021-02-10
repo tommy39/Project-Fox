@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using IND.HittableSurfaces;
 using IND.Player;
+using IND.UI;
 
 namespace IND.Weapons
 {
@@ -15,8 +16,9 @@ namespace IND.Weapons
 
         private PlayerAnimController animController;
         private PlayerAimController aimController;
+        private GameplayHUDManager hudManager;
 
-        private int currentMagazineAmmoAmount;
+        [HideInInspector] public int currentMagazineAmmoAmount;
 
         private RaycastHit rayHit;
         private Vector3 rayDirection;
@@ -25,9 +27,10 @@ namespace IND.Weapons
         {
             aimController = GetComponentInParent<PlayerAimController>();
             animController = GetComponentInParent<PlayerAnimController>();
+            hudManager = FindObjectOfType<GameplayHUDManager>();
         }
 
-        private void Start()
+        public void Init()
         {
             currentMagazineAmmoAmount = weaponData.maxMagazineAmmo;
         }
@@ -90,6 +93,8 @@ namespace IND.Weapons
                     hitboxController.OnHitboxHit(this);
                 }
             }
+
+            hudManager.UpdateWeaponAmmoUI();
         }
 
         private void BeginReload()
@@ -109,6 +114,7 @@ namespace IND.Weapons
             yield return new WaitForSeconds(weaponData.reloadDuration);
             currentMagazineAmmoAmount = weaponData.maxMagazineAmmo;
             animController.SetAnimBool(PlayerAnimatorStatics.isReloadingAnimBool, false);
+            hudManager.UpdateWeaponAmmoUI();
         }
     }
 }

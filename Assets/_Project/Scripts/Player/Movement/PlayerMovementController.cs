@@ -46,6 +46,12 @@ namespace IND.Player
         private Quaternion targetRotation;
         #endregion
 
+        #region Grounding
+        public bool isGrounded = false;
+        public LayerMask groundingLayers;
+
+        #endregion
+
 
         private void Awake()
         {
@@ -72,6 +78,7 @@ namespace IND.Player
             HandleMovementInputs();
             CheckMovementInputs();
             HandleRotation();
+            isGrounded = CheckIsGrounded();
 
             camForward = Vector3.Scale(cam.transform.up, new Vector3(1, 0, 1)).normalized;
             move = verticalInput * camForward + horizontalInput * cam.transform.right;
@@ -121,6 +128,11 @@ namespace IND.Player
                     ToggleSprint(false);
                 }
             }
+        }
+
+        private bool CheckIsGrounded()
+        {
+            return Physics.Raycast(new Vector3(transform.position.x, transform.position.y + 0.1f, transform.position.z), -Vector3.up, data.groundCheckDistance);
         }
 
         private void ToggleSprint(bool val)

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using IND.Weapons;
+using IND.UI;
 
 namespace IND.Player
 {
@@ -14,10 +15,12 @@ namespace IND.Player
 
         private PlayerAnimController animController;
         private PlayerAimController aimController;
+        private GameplayHUDManager hudManager;
 
         private void Awake()
         {
             animController = GetComponent<PlayerAnimController>();
+            hudManager = FindObjectOfType<GameplayHUDManager>();
         }
 
         private void Start()
@@ -28,6 +31,8 @@ namespace IND.Player
             {
                 SpawnWeapon();
             }
+
+            hudManager.AssignPlayer(this);
         }
 
         private void Update()
@@ -43,6 +48,7 @@ namespace IND.Player
             geo.transform.localRotation = Quaternion.identity;
 
             weaponController = geo.GetComponent<WeaponController>();
+            weaponController.Init();
         }
 
     }
