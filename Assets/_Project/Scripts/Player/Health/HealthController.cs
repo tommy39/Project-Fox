@@ -29,7 +29,6 @@ namespace IND.Player
 
         private void Death()
         {
-            Debug.Log("Death");
             ragdollController.EnableRagdoll();
         }
 

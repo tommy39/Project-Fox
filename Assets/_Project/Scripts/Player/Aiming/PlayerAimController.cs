@@ -45,7 +45,7 @@ namespace IND.Player
                 aimTarget = aimTargetGeo.transform;
             }
 
-            if(aimTargetLineRenderer == null)
+            if (aimTargetLineRenderer == null)
             {
                 GameObject geo = Instantiate(aimTargetLinePrefab);
                 aimTargetLineRenderer = geo.GetComponent<LineRenderer>();
@@ -64,20 +64,26 @@ namespace IND.Player
         private void HandleAimState()
         {
             if (isAiming == false && movementController.isSprinting == true)
-                return;
-
-            aimCursorUI.UpdatePosition(aimTarget.position);
-
-            if (isAiming == false)
             {
-                if (Input.GetMouseButtonDown(1))
+                return;
+            }
+            else if (isAiming == false && movementController.IsMovingInProne() == true)
+            {
+                return;
+            }
+            else if (isAiming == false && movementController.isSprinting == false && movementController.IsMovingInProne() == false)
+            {
+                if (Input.GetMouseButton(1))
                 {
                     ToggleAimState(true);
                 }
             }
-            else
+
+            aimCursorUI.UpdatePosition(aimTarget.position);
+
+            if (isAiming == true)
             {
-                if(movementController.isSprinting == true)
+                if (movementController.isSprinting == true || movementController.IsMovingInProne() == true)
                 {
                     ToggleAimState(false);
                     return;

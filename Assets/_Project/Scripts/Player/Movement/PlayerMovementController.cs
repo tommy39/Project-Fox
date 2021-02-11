@@ -49,7 +49,6 @@ namespace IND.Player
         #region Grounding
         public bool isGrounded = false;
         public LayerMask groundingLayers;
-
         #endregion
 
 
@@ -91,11 +90,17 @@ namespace IND.Player
 
             MovePlayer(move);
 
-
-            moveInput = new Vector3(horizontalInput, 0f, verticalInput);
-            moveVelocity = moveInput * GetMovementSpeed();
-            rigidBody.velocity = moveVelocity;
-
+            if (isGrounded == true)
+            {
+                moveInput = new Vector3(horizontalInput, 0f, verticalInput);
+                moveVelocity = moveInput * GetMovementSpeed();
+                rigidBody.velocity = moveVelocity;
+            }
+            else
+            {
+                rigidBody.AddForce(Vector3.down * data.gravity); 
+            }
+           
             UpdateMovementAnims();
         }
 
@@ -191,7 +196,7 @@ namespace IND.Player
             {
                 adjustedAimPos = new Vector3(transform.position.x + aimPosAdjustmentAmount, 0f, transform.position.z + aimPosAdjustmentAmount);
             }
-            else if (leftMovementInput == true && backwardsMovementInput == true) //Backward Right
+            else if (rightMovementInput == true && backwardsMovementInput == true) //Backward Right
             {
                 adjustedAimPos = new Vector3(transform.position.x + aimPosAdjustmentAmount, 0f, transform.position.z - aimPosAdjustmentAmount);
             }
@@ -359,5 +364,26 @@ namespace IND.Player
             proneCollider.enabled = false;
             standingCollider.enabled = true;
         }
+
+
+        public bool IsMovingInProne()
+        {
+            if(postureState == PostureState.PRONE)
+            {
+                if (isPressingMovementKeys == true)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
     }
 }

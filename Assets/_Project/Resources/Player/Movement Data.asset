@@ -17,3 +17,5 @@ MonoBehaviour:
   crouchedMovementSpeed: 3
   proneMovementSpeed: 1
   aimRotationSpeed: 20
+  groundCheckDistance: 0.2
+  gravity: 20

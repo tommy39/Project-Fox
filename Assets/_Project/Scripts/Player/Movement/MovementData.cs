@@ -13,5 +13,7 @@ namespace IND.Player
         public float proneMovementSpeed;
         public float aimRotationSpeed = 20f;
         public float groundCheckDistance = 2f;
+        //Amount of downward gravity;
+        public float gravity = 20f;
     }
 }
