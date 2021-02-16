@@ -21,6 +21,7 @@ namespace IND.Player
         private PlayerMovementController movementController;
         private PlayerAnimController animController;
         private AimCursorUIManager aimCursorUI;
+        private RegularAimCursorController regularAimCursorController;
         private Camera cam;
 
         private Ray rayCastPoint;
@@ -34,6 +35,7 @@ namespace IND.Player
             animController = GetComponent<PlayerAnimController>();
             movementController = GetComponent<PlayerMovementController>();
             aimCursorUI = FindObjectOfType<AimCursorUIManager>();
+            regularAimCursorController = FindObjectOfType<RegularAimCursorController>();
         }
 
         private void Start()
@@ -121,6 +123,15 @@ namespace IND.Player
             aimTargetMeshRenderer.gameObject.SetActive(val);
             aimTargetLineRenderer.gameObject.SetActive(val);
             aimCursorUI.gameObject.SetActive(val);
+
+            if(val == false)
+            {
+                regularAimCursorController.gameObject.SetActive(true);
+            }
+            else
+            {
+                regularAimCursorController.gameObject.SetActive(false);
+            }
         }
     }
 }
