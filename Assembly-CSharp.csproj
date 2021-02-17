@@ -109,6 +109,13 @@
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
     <Compile Include="Assets\_Project\Scripts\Player\Health\HealthHitboxController.cs" />
     <Compile Include="Assets\_Project\Scripts\Cursor\RegularAimCursorController.cs" />
+    <Compile Include="Assets\_Project\Scripts\Player\PlayerManager.cs" />
+    <Compile Include="Assets\_Project\Scripts\Player\PlayerStatics.cs" />
+    <Compile Include="Assets\_Project\Scripts\Teams\TeamType.cs" />
+    <Compile Include="Assets\_Project\Scripts\Teams\TeamSelectionUI.cs" />
+    <Compile Include="Assets\_Project\Scripts\Player\PlayerController.cs" />
+    <Compile Include="Assets\_Project\Scripts\Teams\TeamManager.cs" />
+    <Compile Include="Assets\_Project\Scripts\UI\PauseMenuManager.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

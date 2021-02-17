@@ -14,6 +14,12 @@ namespace IND.Player
             PlayerAnimatorStatics.Initialize();
         }
 
+        public void OnDeath()
+        {
+            Destroy(anim);
+            Destroy(this);
+        }
+
         public bool GetAnimBoolState(int id)
         {
             return anim.GetBool(id);

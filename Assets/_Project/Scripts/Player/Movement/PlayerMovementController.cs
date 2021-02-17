@@ -14,6 +14,10 @@ namespace IND.Player
         public CapsuleCollider crouchedCollider;
         public CapsuleCollider proneCollider;
 
+        public CapsuleCollider standingHitbox;
+        public CapsuleCollider crouchedHitbox;
+        public CapsuleCollider proneHitbox;
+
         private Rigidbody rigidBody;
         private Camera cam;
         private PlayerAnimController animController;
@@ -331,8 +335,13 @@ namespace IND.Player
             }
 
             crouchedCollider.enabled = true;
+            crouchedHitbox.enabled = true;
+
             proneCollider.enabled = false;
+            proneHitbox.enabled = false;
+
             standingCollider.enabled = false;
+            standingHitbox.enabled = false;
 
             postureState = PostureState.CROUCHED;
             animController.SetAnimInt(PlayerAnimatorStatics.postureStateInt, 1);
@@ -348,7 +357,12 @@ namespace IND.Player
 
 
             crouchedCollider.enabled = false;
+            crouchedHitbox.enabled = false;
+
             proneCollider.enabled = true;
+            proneHitbox.enabled = true;
+
+            standingCollider.enabled = false;
             standingCollider.enabled = false;
 
             postureState = PostureState.PRONE;
@@ -361,10 +375,14 @@ namespace IND.Player
             animController.SetAnimInt(PlayerAnimatorStatics.postureStateInt, 0);
 
             crouchedCollider.enabled = false;
+            crouchedHitbox.enabled = false;
+
             proneCollider.enabled = false;
+            proneHitbox.enabled = false;
+
+            standingHitbox.enabled = true;
             standingCollider.enabled = true;
         }
-
 
         public bool IsMovingInProne()
         {
@@ -385,5 +403,16 @@ namespace IND.Player
             }
         }
 
+        public void OnDeath()
+        {
+            Destroy(standingCollider.gameObject);
+            Destroy(crouchedCollider.gameObject);
+            Destroy(proneCollider.gameObject);
+            Destroy(standingHitbox.gameObject);
+            Destroy(crouchedHitbox.gameObject);
+            Destroy(proneHitbox.gameObject);
+           
+            Destroy(this);
+        }
     }
 }

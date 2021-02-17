@@ -7,8 +7,11 @@ namespace IND.UI
     public class AimCursorUIManager : MonoBehaviour
     {
         private Camera cam;
+
+        public static AimCursorUIManager singleton;
         private void Awake()
         {
+            singleton = this;
             cam = FindObjectOfType<Camera>();
         }
 

@@ -51,6 +51,9 @@ namespace IND.Weapons
                 return;
             }
 
+            if (aimController.isPlayerTooCloseToWall == true)
+                return;
+
             if (Input.GetMouseButtonDown(0))
             {
                 FireWeapon();
@@ -92,6 +95,8 @@ namespace IND.Weapons
                 {
                     hitboxController.OnHitboxHit(this);
                 }
+
+                Debug.Log(rayHit.transform.gameObject.name);
             }
 
             hudManager.UpdateWeaponAmmoUI();

@@ -17,6 +17,6 @@ namespace IND.Weapons
         public int maxMagazineAmmo = 5;
         public Sprite weaponDiagonalIcon;
         public Sprite weaponHorizontalIcon;
-
+        public float minDistanceFromWallToShoot = 1f;
     }
 }

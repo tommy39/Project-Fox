@@ -51,5 +51,10 @@ namespace IND.Player
             weaponController.Init();
         }
 
+        public void OnDeath()
+        {
+            Destroy(weaponController);
+            Destroy(this);
+        }
     }
 }
