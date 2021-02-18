@@ -25,7 +25,7 @@ namespace IND.Player
         {
             teamType = team;
             playerManager = manager;
-            cam = FindObjectOfType<Camera>();
+            cam = FindObjectOfType<CinemachineBrain>().GetComponent<Camera>();
             vcam = FindObjectOfType<CinemachineVirtualCamera>();
             vcam.Follow = transform;
             AssignMaterials();

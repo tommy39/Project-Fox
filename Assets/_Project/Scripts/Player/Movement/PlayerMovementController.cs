@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -59,7 +60,7 @@ namespace IND.Player
         private void Awake()
         {
             rigidBody = GetComponent<Rigidbody>();
-            cam = FindObjectOfType<Camera>();
+            cam = FindObjectOfType<CinemachineBrain>().GetComponent<Camera>(); 
             animController = GetComponent<PlayerAnimController>();
             inventoryController = GetComponent<PlayerInventoryController>();
             aimController = GetComponent<PlayerAimController>();

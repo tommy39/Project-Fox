@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29ee000b648ea0f4a8160af8d395d36b, type: 3}
+  m_Name: Weapon_Shotgun_DoubleBarrel
+  m_EditorClassIdentifier: 
+  weaponName: Double Barrel
+  weaponDescription: A Double Barrel Shotgun
+  modelPrefab: {fileID: 4007005166309913283, guid: 62087067839317545aeaa563fe3d832f, type: 3}
+  weaponAnimID: 0
+  fireRateMode: 0
+  firingWeaponAnimTimer: 0.1
+  fireRate: 0.1
+  weaponDamage: 100
+  reloadDuration: 1.8
+  maxMagazineAmmo: 2
+  minDistanceFromWallToShoot: 1.04
+  bulletType: 1
+  bulletAmounts: 10
+  spreadAngle: 0.16
+  weaponDiagonalIcon: {fileID: 21300000, guid: 5273b93270c2c524aaacfa042d4dbb78, type: 3}
+  weaponHorizontalIcon: {fileID: 21300000, guid: afe26251c2ce9004a9e2655d3709c014, type: 3}
+  renderPos: {x: -0.009, y: -0.018, z: 0.061}
+  renderRot: {x: -0.5966946, y: -0.43924958, z: 0.10794602, w: 0.66284466}

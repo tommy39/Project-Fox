@@ -15,17 +15,21 @@ namespace IND.Player
 
         private PlayerAnimController animController;
         private PlayerAimController aimController;
+        private PlayerLoadoutManager playerLoadoutManager;
         private GameplayHUDManager hudManager;
 
         private void Awake()
         {
             animController = GetComponent<PlayerAnimController>();
             hudManager = FindObjectOfType<GameplayHUDManager>();
+            playerLoadoutManager = FindObjectOfType<PlayerLoadoutManager>();
         }
 
         private void Start()
         {
             aimController = GetComponent<PlayerAimController>();
+
+            weaponData = playerLoadoutManager.equippedWeapon;
 
             if (weaponData != null)
             {

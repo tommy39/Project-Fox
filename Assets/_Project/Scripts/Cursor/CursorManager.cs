@@ -19,7 +19,7 @@ namespace IND.Cursors
             }
         }
 
-        private void ToggleCursorVisibility(bool val)
+        public void ToggleCursorVisibility(bool val)
         {
             Cursor.visible = val;
         }

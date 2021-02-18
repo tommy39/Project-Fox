@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 namespace IND.UI
 {
@@ -12,7 +13,7 @@ namespace IND.UI
         private void Awake()
         {
             singleton = this;
-            cam = FindObjectOfType<Camera>();
+            cam = FindObjectOfType<CinemachineBrain>().GetComponent<Camera>();
         }
 
         public void UpdatePosition(Vector3 worldPos)

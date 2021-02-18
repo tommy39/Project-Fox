@@ -13,11 +13,21 @@ namespace IND.UI
         [SerializeField] private TextMeshProUGUI weaponNameText;
         [SerializeField] private TextMeshProUGUI weaponAmmoText;
 
+        [SerializeField] private GameObject childObject;
+
         private PlayerInventoryController playerInventoryController;
         private PlayerMovementController playerMovementController;
 
+        public static GameplayHUDManager singleton;
+        private void Awake()
+        {
+            singleton = this;
+            CloseInterface();
+        }
+
         public void AssignPlayer(PlayerInventoryController inventoryController)
         {
+            OpenInterface();
             playerInventoryController = inventoryController;
             playerMovementController = inventoryController.GetComponent<PlayerMovementController>();
 
@@ -29,6 +39,16 @@ namespace IND.UI
         public void UpdateWeaponAmmoUI()
         {
             weaponAmmoText.text = "- " + playerInventoryController.weaponController.currentMagazineAmmoAmount.ToString() + "/" + playerInventoryController.weaponData.maxMagazineAmmo.ToString();
+        }
+
+        public void OpenInterface()
+        {
+            childObject.SetActive(true);
+        }
+
+        public void CloseInterface()
+        {
+            childObject.SetActive(false);
         }
     }
 }

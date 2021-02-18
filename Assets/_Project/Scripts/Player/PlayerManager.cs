@@ -1,4 +1,5 @@
 using IND.Teams;
+using IND.UI;
 using UnityEngine;
 
 namespace IND.Player
@@ -11,6 +12,7 @@ namespace IND.Player
 
         private TeamManager teamManager;
         private TeamSelectionUI teamSelectionUIManager;
+        private WeaponLoadoutUIManager loadoutUIManager;
 
         public static PlayerManager singleton;
         private void Awake()
@@ -22,6 +24,8 @@ namespace IND.Player
 
         private void Start()
         {
+            loadoutUIManager = WeaponLoadoutUIManager.singleton;
+
             if (teamType == TeamType.SPEC)
             {
                 //Enable The Pick Team UI on start
@@ -34,7 +38,7 @@ namespace IND.Player
             }
         }
 
-        public void OnTeamChange(TeamType type)
+        public void OnTeamChange(TeamType type, bool openLoadoutInterface)
         {
             if (type == teamType)
                 return;
@@ -42,23 +46,27 @@ namespace IND.Player
             if (type != TeamType.SPEC)
             {
                 //Remove Character Controller From The World
-
+                if (createdPlayerController != null)
+                {
+                    createdPlayerController.GetComponent<HealthController>().Death(true);
+                }
             }
 
             teamType = type;
 
-            switch (type)
+            if(openLoadoutInterface == true)
             {
-                case TeamType.SPEC:
-                    break;
-                case TeamType.BLUE:
-                    SpawnPlayer();
-                    break;
-                case TeamType.RED:
-                    SpawnPlayer();
-                    break;
+                loadoutUIManager.OpenInterface();
+                return;
+            }
+
+            if(type != TeamType.SPEC)
+            {
+                SpawnPlayer();
             }
         }
+
+
 
         public void SpawnPlayer()
         {

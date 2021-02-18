@@ -9,14 +9,31 @@ namespace IND.Weapons
     public class WeaponData : ScriptableObject
     {
         public string weaponName;
+        public string weaponDescription;
         public GameObject modelPrefab;
         public int weaponAnimID;
+
+        [Header("Fire Data")]
+        public WeaponFireRate fireRateMode;
         public float firingWeaponAnimTimer = 0.1f;
+        public float fireRate = 0.1f;
         public float weaponDamage = 100f;
         public float reloadDuration = 1f;
         public int maxMagazineAmmo = 5;
+        public float minDistanceFromWallToShoot = 1f;
+
+        [Header("Bullet Mode")]
+        public WeaponBulletType bulletType;
+        public int bulletAmounts = 1;
+        public float spreadAngle = 0f;
+
+        [Header ("UI")]
         public Sprite weaponDiagonalIcon;
         public Sprite weaponHorizontalIcon;
-        public float minDistanceFromWallToShoot = 1f;
+
+        [Header("3D Weapon Render")]
+        public Vector3 renderPos;
+        public Quaternion renderRot;
+
     }
 }

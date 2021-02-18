@@ -74,7 +74,6 @@ namespace IND.Player
 
             aimTargetMeshRenderer = aimTarget.gameObject.GetComponentInChildren<MeshRenderer>();
             ToggleAimState(false);
-            Debug.Log(gameObject);
         }
 
         private void Update()
@@ -217,17 +216,17 @@ namespace IND.Player
         {
             isAiming = val;
             animController.SetAnimBool(PlayerAnimatorStatics.isAimingAnimBool, val);
-            aimTargetMeshRenderer.gameObject.SetActive(val);
+            aimTargetMeshRenderer.gameObject.SetActive(false); //Currently Removed So Setting To False
             aimTargetLineRenderer.gameObject.SetActive(val);
             aimCursorUI.gameObject.SetActive(val);
 
             if (val == false)
             {
-                regularAimCursorController.gameObject.SetActive(true);
+              //  regularAimCursorController.gameObject.SetActive(true);
             }
             else
             {
-                regularAimCursorController.gameObject.SetActive(false);
+              //  regularAimCursorController.gameObject.SetActive(false);
             }
         }
 
@@ -236,6 +235,7 @@ namespace IND.Player
             Destroy(aimTargetLineRenderer.gameObject);
             Destroy(blockedAimTargetLineRenderer.gameObject);
             Destroy(aimTargetMeshRenderer.gameObject);
+            Destroy(aimTarget.gameObject);
 
             Destroy(this);
         }

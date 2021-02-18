@@ -20,6 +20,8 @@ namespace IND.Weapons
 
         [HideInInspector] public int currentMagazineAmmoAmount;
 
+        private bool hasFireRateCooldown = false;
+
         private RaycastHit rayHit;
         private Vector3 rayDirection;
 
@@ -33,6 +35,7 @@ namespace IND.Weapons
         public void Init()
         {
             currentMagazineAmmoAmount = weaponData.maxMagazineAmmo;
+
         }
 
         private void Update()
@@ -46,15 +49,39 @@ namespace IND.Weapons
             if (aimController.isAiming == false)
                 return;
 
-            if(currentMagazineAmmoAmount == 0)
+            if (currentMagazineAmmoAmount == 0)
             {
                 return;
             }
 
+            if (hasFireRateCooldown == true)
+                return;
+
             if (aimController.isPlayerTooCloseToWall == true)
                 return;
 
+            switch (weaponData.fireRateMode)
+            {
+                case WeaponFireRate.SEMI_AUTO:
+                    HandleSemiAutoFireInput();
+                    break;
+                case WeaponFireRate.AUTO:
+                    HandleFullAutoFireInput();
+                    break;
+            }
+        }
+
+        private void HandleSemiAutoFireInput()
+        {
             if (Input.GetMouseButtonDown(0))
+            {
+                FireWeapon();
+            }
+        }
+
+        private void HandleFullAutoFireInput()
+        {
+            if (Input.GetMouseButton(0))
             {
                 FireWeapon();
             }
@@ -62,9 +89,9 @@ namespace IND.Weapons
 
         private void HandleReloadInput()
         {
-            if(currentMagazineAmmoAmount != weaponData.maxMagazineAmmo)
+            if (currentMagazineAmmoAmount != weaponData.maxMagazineAmmo)
             {
-                if(Input.GetKeyDown(KeyCode.R))
+                if (Input.GetKeyDown(KeyCode.R))
                 {
                     BeginReload();
                 }
@@ -77,29 +104,80 @@ namespace IND.Weapons
             animController.SetAnimBool(PlayerAnimatorStatics.isFiringAnimBool, true);
             muzzleFlashController.PlayFireParticles();
             StartCoroutine(StopWeaponFiringTimer());
-
+            StartCoroutine(AttackCooldownTimer());
+            hasFireRateCooldown = true;
             rayDirection = aimController.aimTarget.position - shootpoint.position;
 
+            switch (weaponData.bulletType)
+            {
+                case WeaponBulletType.SINGLE:
+                    FireSingleBullet();
+                    break;
+                case WeaponBulletType.SPREAD:
+                    FireSpreadBullet();
+                    break;
+            }
+
+
+            hudManager.UpdateWeaponAmmoUI();
+        }
+
+        private void FireSingleBullet()
+        {
             if (Physics.Raycast(shootpoint.position, rayDirection, out rayHit, 100f, aimController.aimLayerMasks))
             {
                 HittableSurfaceController hitSurfaceController = null;
                 hitSurfaceController = rayHit.transform.GetComponent<HittableSurfaceController>();
-                if(hitSurfaceController != null)
+                if (hitSurfaceController != null)
                 {
                     hitSurfaceController.ObjectHit(rayHit.point, -rayHit.normal);
                 }
 
                 HealthHitboxController hitboxController = null;
                 hitboxController = rayHit.transform.GetComponent<HealthHitboxController>();
-                if(hitboxController != null)
+                if (hitboxController != null)
                 {
                     hitboxController.OnHitboxHit(this);
                 }
 
-                Debug.Log(rayHit.transform.gameObject.name);
             }
+        }
 
-            hudManager.UpdateWeaponAmmoUI();
+        private void FireSpreadBullet()
+        {
+            if (Physics.Raycast(shootpoint.position, rayDirection, out rayHit, 100f, aimController.aimLayerMasks))
+            {
+                for (int i = 0; i < weaponData.bulletAmounts; i++)
+                {
+                    //Get Hit Point
+                    Vector3 hitTarget = rayHit.point;
+
+                    //Foreach bullet get random pos for x,y,z within a max distance 
+                    float x = Random.Range(hitTarget.x - weaponData.spreadAngle, hitTarget.x + weaponData.spreadAngle);
+                    float y = Random.Range(hitTarget.y - weaponData.spreadAngle, hitTarget.y + weaponData.spreadAngle);
+                    float z = Random.Range(hitTarget.z - weaponData.spreadAngle, hitTarget.z + weaponData.spreadAngle);
+
+                    //Calculate Direction to new destination from shootpoint 
+                    Vector3 newHitTarget = new Vector3(x, y, z);
+                    rayDirection = newHitTarget - shootpoint.position;
+                    if (Physics.Raycast(shootpoint.position, rayDirection, out rayHit, 100f, aimController.aimLayerMasks))
+                    {
+                        HittableSurfaceController hitSurfaceController = null;
+                        hitSurfaceController = rayHit.transform.GetComponent<HittableSurfaceController>();
+                        if (hitSurfaceController != null)
+                        {
+                            hitSurfaceController.ObjectHit(rayHit.point, -rayHit.normal);
+                        }
+
+                        HealthHitboxController hitboxController = null;
+                        hitboxController = rayHit.transform.GetComponent<HealthHitboxController>();
+                        if (hitboxController != null)
+                        {
+                            hitboxController.OnHitboxHit(this);
+                        }
+                    }
+                }           
+            }
         }
 
         private void BeginReload()
@@ -120,6 +198,12 @@ namespace IND.Weapons
             currentMagazineAmmoAmount = weaponData.maxMagazineAmmo;
             animController.SetAnimBool(PlayerAnimatorStatics.isReloadingAnimBool, false);
             hudManager.UpdateWeaponAmmoUI();
+        }
+
+        private IEnumerator AttackCooldownTimer()
+        {
+            yield return new WaitForSeconds(weaponData.fireRate);
+            hasFireRateCooldown = false;
         }
     }
 }

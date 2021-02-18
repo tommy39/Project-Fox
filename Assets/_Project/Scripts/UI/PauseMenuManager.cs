@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using IND.Player;
+using IND.Teams;
 
 namespace IND.UI
 {
@@ -18,6 +19,7 @@ namespace IND.UI
         private bool isMenuActive = false;
 
         private PlayerManager playersManager;
+        private TeamSelectionUI teamSelectionUI;
 
         private void Awake()
         {
@@ -30,6 +32,11 @@ namespace IND.UI
             quitBtn.onClick.AddListener(() => { QuitGameButtonPressed(); });
 
             childObject.SetActive(false);
+        }
+
+        private void Start()
+        {
+            teamSelectionUI = TeamSelectionUI.singleton;
         }
 
         private void Update()
@@ -51,17 +58,27 @@ namespace IND.UI
         {
             childObject.SetActive(val);
             isMenuActive = val;
+
+            if(val == false)
+            {
+                UIManager.singleton.OnUIElementDeActivated();
+            }
+            else
+            {
+                UIManager.singleton.OnUIElementActivated(childObject);
+            }
         }
 
         private void RespawnButtonPressed()
         {
-            playersManager.RespawnPlayer();
             ToggleMenu(false);
+            playersManager.RespawnPlayer();
         }
 
         private void ChangeTeamButtonPressed()
         {
-
+            ToggleMenu(false);
+            teamSelectionUI.OpenInterface();
         }
 
         private void OptionsButtonPressed()
