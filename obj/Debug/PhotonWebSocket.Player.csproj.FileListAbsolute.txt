@@ -188,8 +188,6 @@ F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\UnityEngine.VRModu
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\UnityEngine.WindModule.dll
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\UnityEngine.XRModule.dll
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\websocket-sharp.dll
-F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\UnityEditor.CoreModule.dll
-F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\Unity.Cecil.dll
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\UnityEngine.pdb
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\UnityEngine.AIModule.pdb
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\UnityEngine.ARModule.pdb
@@ -259,6 +257,8 @@ F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\UnityEditor.UI.pdb
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\Photon3Unity3D.pdb
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\Photon3Unity3D.xml
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\UnityEngine.UI.pdb
-F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\UnityEditor.CoreModule.xml
 F:\UnityProjects\ProjectFox\Project-Fox\obj\Debug\PhotonWebSocket.Player.csproj.CopyComplete
 F:\UnityProjects\ProjectFox\Project-Fox\obj\Debug\PhotonWebSocket.pdb
+F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\UnityEditor.CoreModule.dll
+F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\Unity.Cecil.dll
+F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\UnityEditor.CoreModule.xml

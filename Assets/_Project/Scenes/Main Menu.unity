@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1481.9727, g: 1836.0449, b: 2430.713, a: 1}
+  m_IndirectSpecularColor: {r: 1481.6191, g: 1835.6934, b: 2430.2617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1714,6 +1714,7 @@ MonoBehaviour:
   requireNameToPlay: 1
   connectingMenu: {fileID: 1855263254}
   notConnectingMenu: {fileID: 1240940259}
+  startRoomAutomatically: 1
 --- !u!1 &1955146117
 GameObject:
   m_ObjectHideFlags: 0

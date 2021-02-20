@@ -53,9 +53,6 @@
     <UnityVersion>2020.2.1f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Assets\Photon\PhotonRealtime\Demos\DemoLoadBalancing\ConnectAndJoinRandomLb.cs" />
     <Compile Include="Assets\_Project\VFX\KriptoFX\MuzzleFlashes\Scripts\Rendering\FPS_UseLight.cs" />
     <Compile Include="Assets\_Project\Scripts\Hittable Surfaces\HittableSurfaceController.cs" />
@@ -63,6 +60,7 @@
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatAppIdCheckerUI.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\AppSettingsExtensions.cs" />
     <Compile Include="Assets\_Project\Scripts\Player\Ragdoll\RagdollController.cs" />
+    <Compile Include="Assets\_Project\Scripts\Weapons\WeaponFireRate.cs" />
     <Compile Include="Assets\_Project\VFX\KriptoFX\BloodFX\Others\DemoGUI.cs" />
     <Compile Include="Assets\_Project\Scripts\Player\Movement\MovementData.cs" />
     <Compile Include="Assets\_Project\Scripts\UI\PauseMenuManager.cs" />
@@ -70,8 +68,10 @@
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\_Project\VFX\KriptoFX\MuzzleFlashes\Scripts\Demo\FPS_MouseLook.cs" />
     <Compile Include="Assets\_Project\Scripts\Hittable Surfaces\HittableSurfacesParticlePoolingManager.cs" />
+    <Compile Include="Assets\_Project\Scripts\UI\MainMenuManager.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChannelSelector.cs" />
     <Compile Include="Assets\_Project\VFX\KriptoFX\MuzzleFlashes\Scripts\FPSLightCurves.cs" />
+    <Compile Include="Assets\_Project\Scripts\UI\PlayerNameInputFieldController.cs" />
     <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\EventSystemSpawner.cs" />
     <Compile Include="Assets\_Project\Scripts\Weapons\WeaponController.cs" />
@@ -86,6 +86,7 @@
     <Compile Include="Assets\_Project\Scripts\Weapons\WeaponData.cs" />
     <Compile Include="Assets\_Project\Scripts\Player\Health\HealthController.cs" />
     <Compile Include="Assets\_Project\VFX\KriptoFX\MuzzleFlashes\Scripts\FPSRandomRotateAngle.cs" />
+    <Compile Include="Assets\_Project\Scripts\UI\UIManager.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextButtonTransition.cs" />
     <Compile Include="Assets\_Project\Scripts\UI\WeaponLoadoutUIManager.cs" />
     <Compile Include="Assets\_Project\Scripts\Player\Animations\PlayerAnimatorStatics.cs" />
@@ -98,7 +99,9 @@
     <Compile Include="Assets\_Project\VFX\KriptoFX\MuzzleFlashes\Scripts\FPSShaderFloatCurves.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\_Project\VFX\KriptoFX\MuzzleFlashes\Scripts\MaterialType.cs" />
+    <Compile Include="Assets\_Project\Scripts\Weapons\WeaponBulletType.cs" />
     <Compile Include="Assets\_Project\VFX\KriptoFX\MuzzleFlashes\Scripts\Rendering\FPS_CustomLight.cs" />
+    <Compile Include="Assets\_Project\Scripts\Network\AutomaticNetworkRoomCreator.cs" />
     <Compile Include="Assets\Scripts\LookWithMouse.cs" />
     <Compile Include="Assets\_Project\Scripts\Teams\TeamManager.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\IgnoreUiRaycastWhenInactive.cs" />
@@ -122,12 +125,8 @@
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
     <Compile Include="Assets\_Project\Scripts\Player\PlayerStatics.cs" />
     <Compile Include="Assets\_Project\Scripts\Player\Health\HealthHitboxController.cs" />
-    <Compile Include="Assets\_Project\Scripts\UI\UIManager.cs" />
-    <Compile Include="Assets\_Project\Scripts\Weapons\WeaponFireRate.cs" />
-    <Compile Include="Assets\_Project\Scripts\Weapons\WeaponBulletType.cs" />
-    <Compile Include="Assets\_Project\Scripts\UI\MainMenuManager.cs" />
-    <Compile Include="Assets\_Project\Scripts\UI\PlayerNameInputFieldController.cs" />
-    <Compile Include="Assets\_Project\Scripts\Network\AutomaticNetworkRoomCreator.cs" />
+    <Compile Include="Assets\_Project\Scripts\Network\ClientManager.cs" />
+    <Compile Include="Assets\_Project\Scripts\Network\ClientData.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

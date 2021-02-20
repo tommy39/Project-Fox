@@ -22,6 +22,8 @@ namespace IND.UI
         [SerializeField] private GameObject connectingMenu = default;
         [SerializeField] private GameObject notConnectingMenu = default;
 
+        public bool startRoomAutomatically = false;
+
         private void Awake()
         {
             PhotonNetwork.AutomaticallySyncScene = true;
@@ -32,7 +34,10 @@ namespace IND.UI
 
         private void Start()
         {
-
+            if(startRoomAutomatically == true)
+            {
+                OnPlayOnlinePressed();
+            }
         }
 
         private void OnPlayOnlinePressed()
