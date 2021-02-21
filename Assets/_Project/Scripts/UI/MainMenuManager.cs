@@ -34,7 +34,13 @@ namespace IND.UI
 
         private void Start()
         {
-            if(startRoomAutomatically == true)
+            StartCoroutine(DelayedStart());
+        }
+
+        private IEnumerator DelayedStart()
+        {
+            yield return new WaitForSeconds(0.2f);
+            if (startRoomAutomatically == true)
             {
                 OnPlayOnlinePressed();
             }

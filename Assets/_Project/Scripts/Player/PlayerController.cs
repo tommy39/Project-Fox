@@ -1,36 +1,66 @@
-using UnityEngine;
 using Cinemachine;
+using IND.Network;
 using IND.Teams;
+using Photon.Pun;
+using UnityEngine;
 
-namespace IND.Player
+namespace IND.PlayerSys
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviourPun
     {
         public TeamType teamType;
+        public ClientController clientController;
 
         [SerializeField] private SkinnedMeshRenderer surfaceMesh;
         [SerializeField] private SkinnedMeshRenderer jointsMesh;
 
         [SerializeField] private Material redSurfaceMat;
         [SerializeField] private Material redJointsMat;
-        [SerializeField] private Material blueSurfaceMat;
-        [SerializeField] private Material blueJointsMat;
+        [SerializeField] private Material blueSurfaceMat = default;
+        [SerializeField] private Material blueJointsMat = default;
 
 
         private Camera cam;
         private CinemachineVirtualCamera vcam;
         private PlayerManager playerManager;
 
-        public void OnSpawn(TeamType team, PlayerManager manager)
+        private void Start()
         {
-            teamType = team;
-            playerManager = manager;
-            cam = FindObjectOfType<CinemachineBrain>().GetComponent<Camera>();
-            vcam = FindObjectOfType<CinemachineVirtualCamera>();
-            vcam.Follow = transform;
-            AssignMaterials();
-        }          
+            playerManager = PlayerManager.singleton;
+            if (photonView.IsMine)
+            {
+                cam = FindObjectOfType<CinemachineBrain>().GetComponent<Camera>();
+                vcam = FindObjectOfType<CinemachineVirtualCamera>();
+                vcam.Follow = transform;
+            }
+            AssignClientController(photonView.ControllerActorNr);
+            AssignPlayerCharacterToClient();
+        }
 
+        public void OnSpawn(TeamType team)
+        {
+            photonView.RPC("AssignTeam", RpcTarget.AllBuffered, team);
+            photonView.RPC("AssignMaterials", RpcTarget.AllBuffered);
+        }
+
+        
+        private void AssignClientController(int id)
+        {
+            clientController = ClientManager.singleton.GetClientByID(id);
+        }
+
+        private void AssignPlayerCharacterToClient()
+        {
+            clientController.data.characterController = this;
+        }
+
+        [PunRPC]
+        private void AssignTeam(TeamType type)
+        {
+            teamType = type;
+        }
+
+        [PunRPC]
         void AssignMaterials()
         {
             switch (teamType)
@@ -49,6 +79,6 @@ namespace IND.Player
                     break;
             }
         }
- 
+
     }
 }

@@ -40,6 +40,23 @@ MonoBehaviour:
   - RespawnSpaceship
   - GetFreeClientID
   - AssignClient
+  - SpawnPlayer
+  - AssignClientToList
+  - AssignClientControllerData
+  - UpdateClientData
+  - AssignMaterials
+  - AssignTeam
+  - AssignPlayerCharacterToClient
+  - AssignClientController
+  - AssignTeamToClient
+  - AssignToClientManager
+  - OnRayHit
+  - ObjectHit
+  - CreatePhotonView
+  - SendFireParticles
+  - OnPlayParticles
+  - ChangeWeapon
+  - TakeDamage
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

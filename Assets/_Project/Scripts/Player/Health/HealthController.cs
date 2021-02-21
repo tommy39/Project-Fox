@@ -1,10 +1,11 @@
 using IND.Weapons;
+using Photon.Pun;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace IND.Player
+namespace IND.PlayerSys
 {
-    public class HealthController : MonoBehaviour
+    public class HealthController : MonoBehaviourPun
     {
         public float currentHealth = 100f;
         private List<HealthHitboxController> childHitboxes = new List<HealthHitboxController>();
@@ -17,19 +18,19 @@ namespace IND.Player
             ragdollController = GetComponent<RagdollController>();
         }
 
-        public void TakeDamage(WeaponController weapon)
+        [PunRPC]
+        public void TakeDamage(float damage, int clientID)
         {
-            currentHealth -= weapon.weaponData.weaponDamage;
+            currentHealth -= damage;
             if (currentHealth <= 0)
             {
                 Death(false);
             }
-
-            Debug.Log(weapon.weaponData.weaponDamage + " damage taken");
         }
 
-        public void Death(bool isForced)
+        private void Death(bool isForced)
         {
+            Destroy(GetComponent<PhotonRigidbodyView>());
             Destroy(GetComponent<Rigidbody>());
 
             ragdollController.EnableRagdoll();
@@ -44,6 +45,7 @@ namespace IND.Player
             GetComponent<PlayerInventoryController>().OnDeath();
             Destroy(GetComponent<PlayerController>());
             Destroy(ragdollController);
+            Destroy(GetComponent<PhotonTransformView>());
 
             if (isForced == false)
             {
@@ -51,6 +53,11 @@ namespace IND.Player
             }
 
             Destroy(this);
+        }
+
+        public void ExternalDeath()
+        {
+            Death(true);
         }
 
         public void AddChildHitbox(HealthHitboxController hitbox)

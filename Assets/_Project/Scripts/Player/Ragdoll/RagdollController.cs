@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace IND.Player
+namespace IND.PlayerSys
 {
     public class RagdollController : MonoBehaviour
     {

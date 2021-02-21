@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using IND.UI;
 using IND.Weapons;
+using Photon.Pun;
 
-namespace IND.Player
+namespace IND.PlayerSys
 {
-    public class PlayerAimController : MonoBehaviour
+    public class PlayerAimController : MonoBehaviourPun
     {
 
         public bool isAiming = false;
@@ -52,6 +53,9 @@ namespace IND.Player
                 aimCursorUI = AimCursorUIManager.singleton;
             }
 
+            if (!photonView.IsMine)
+                return;
+
             if (aimTarget == null)
             {
                 GameObject aimTargetGeo = Instantiate(aimTargetPrefab);
@@ -78,6 +82,9 @@ namespace IND.Player
 
         private void Update()
         {
+            if (!photonView.IsMine)
+                return;
+
             HandleAimState();
         }
 
@@ -232,10 +239,13 @@ namespace IND.Player
 
         public void OnDeath()
         {
-            Destroy(aimTargetLineRenderer.gameObject);
-            Destroy(blockedAimTargetLineRenderer.gameObject);
-            Destroy(aimTargetMeshRenderer.gameObject);
-            Destroy(aimTarget.gameObject);
+            if (photonView.IsMine == true)
+            {
+                Destroy(aimTargetLineRenderer.gameObject);
+                Destroy(blockedAimTargetLineRenderer.gameObject);
+                Destroy(aimTargetMeshRenderer.gameObject);
+                Destroy(aimTarget.gameObject);
+            }
 
             Destroy(this);
         }

@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using IND.Player;
+using IND.PlayerSys;
 using IND.Weapons;
 using UnityEngine.UI;
 using TMPro;
+using Photon.Pun;
 
 namespace IND.UI
 {
-    public class WeaponLoadoutUIManager : MonoBehaviour
+    public class WeaponLoadoutUIManager : MonoBehaviourPun
     {
         [SerializeField] private GameObject childObject = default;
         [SerializeField] private GameObject weaponSlotItemPrefab = default;
@@ -110,9 +111,15 @@ namespace IND.UI
 
         private void ConfirmLoadout()
         {
-            playerLoadoutManager.equippedWeapon = selectedSlot.assignedWeapon;
+            photonView.RPC("ChangeWeapon", RpcTarget.All);
             CloseInterface();
             playerManager.SpawnPlayer();
+        }
+
+        [PunRPC]
+        private void ChangeWeapon()
+        {
+            playerLoadoutManager.equippedWeapon = selectedSlot.assignedWeapon;
         }
     }
 }

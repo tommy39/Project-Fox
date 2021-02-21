@@ -1,11 +1,12 @@
 using Cinemachine;
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace IND.Player
+namespace IND.PlayerSys
 {
-    public class PlayerMovementController : MonoBehaviour
+    public class PlayerMovementController : MonoBehaviourPun
     {
         public MovementData data;
         public PostureState postureState;
@@ -73,12 +74,18 @@ namespace IND.Player
 
         private void Update()
         {
+            if (photonView.IsMine == false)
+                return;
+
             HandleSprintInput();
             HandlePostureInput();
         }
 
         private void FixedUpdate()
         {
+            if (photonView.IsMine == false)
+                return;
+
             HandleMovementInputs();
             CheckMovementInputs();
             HandleRotation();
@@ -317,6 +324,9 @@ namespace IND.Player
 
         private void HandlePostureInput()
         {
+            if (photonView.IsMine == false)
+                return;
+
             if (Input.GetKeyDown(KeyCode.LeftControl))
             {
                 ToggleCrouchPosture();

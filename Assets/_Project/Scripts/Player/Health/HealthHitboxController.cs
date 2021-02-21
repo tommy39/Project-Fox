@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using IND.Weapons;
+using Photon.Pun;
 
-namespace IND.Player
+namespace IND.PlayerSys
 {
     public class HealthHitboxController : MonoBehaviour
     {
@@ -17,7 +18,8 @@ namespace IND.Player
 
         public void OnHitboxHit(WeaponController weapon)
         {
-            parentHealthController.TakeDamage(weapon);
+            object[] data = { weapon.weaponData.weaponDamage, weapon.photonView.ControllerActorNr };
+            parentHealthController.photonView.RPC("TakeDamage", RpcTarget.All, data);
         }
     }
 }

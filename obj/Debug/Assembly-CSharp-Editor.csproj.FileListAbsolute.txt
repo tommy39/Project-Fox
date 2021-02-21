@@ -241,12 +241,9 @@ F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\PhotonChat.pdb
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\PhotonUnityNetworking.Editor.pdb
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\PhotonUnityNetworking.Utilities.PhotonPlayer.Editor.pdb
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\PhotonRealtime.pdb
-F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\PunDemos.DemoHubEditor.pdb
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\PhotonUnityNetworking.Utilities.pdb
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\PhotonUnityNetworking.pdb
-F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\PhotonUnityNetworking.Demos.pdb
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\PhotonWebSocket.pdb
-F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\PunDemos.DemoSlotcarEditor.pdb
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\PhotonUnityNetworking.Utilities.Culling.Editor.pdb
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\UnityEngine.xml
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\UnityEngine.AIModule.xml

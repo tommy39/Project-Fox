@@ -76,7 +76,9 @@
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\EventSystemSpawner.cs" />
     <Compile Include="Assets\_Project\Scripts\Weapons\WeaponController.cs" />
     <Compile Include="Assets\_Project\VFX\KriptoFX\MuzzleFlashes\Scripts\FPS_Decal.cs" />
+    <Compile Include="Assets\_Project\Scripts\Network\ClientManager.cs" />
     <Compile Include="Assets\_Project\VFX\KriptoFX\MuzzleFlashes\Scripts\Demo\FPS_RigidbodyFirstPersonController.cs" />
+    <Compile Include="Assets\_Project\Scripts\Network\ClientData.cs" />
     <Compile Include="Assets\_Project\Scripts\Player\PlayerLoadoutManager.cs" />
     <Compile Include="Assets\_Project\Scripts\UI\GameplayHUDManager.cs" />
     <Compile Include="Assets\_Project\VFX\KriptoFX\MuzzleFlashes\Scripts\Demo\FPSDemoGUI.cs" />
@@ -125,8 +127,7 @@
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
     <Compile Include="Assets\_Project\Scripts\Player\PlayerStatics.cs" />
     <Compile Include="Assets\_Project\Scripts\Player\Health\HealthHitboxController.cs" />
-    <Compile Include="Assets\_Project\Scripts\Network\ClientManager.cs" />
-    <Compile Include="Assets\_Project\Scripts\Network\ClientData.cs" />
+    <Compile Include="Assets\_Project\Scripts\Network\ClientController.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -857,10 +858,6 @@
       <Project>{3ECDB484-9A27-4F7F-CB2A-EC8A9BB2B46F}</Project>
       <Name>PhotonRealtime</Name>
     </ProjectReference>
-    <ProjectReference Include="PunDemos.DemoHubEditor.csproj">
-      <Project>{3D391915-209A-4E19-BB06-E1B9358014CD}</Project>
-      <Name>PunDemos.DemoHubEditor</Name>
-    </ProjectReference>
     <ProjectReference Include="PhotonUnityNetworking.Utilities.csproj">
       <Project>{34D4FC4F-B3D0-8CE7-DEE6-5A9C3DD468EA}</Project>
       <Name>PhotonUnityNetworking.Utilities</Name>
@@ -869,17 +866,9 @@
       <Project>{51236B0E-D8E7-F68F-DEBA-8DEC2529D711}</Project>
       <Name>PhotonUnityNetworking</Name>
     </ProjectReference>
-    <ProjectReference Include="PhotonUnityNetworking.Demos.csproj">
-      <Project>{05862627-8D26-77B1-CF1F-9AE3740BA8C5}</Project>
-      <Name>PhotonUnityNetworking.Demos</Name>
-    </ProjectReference>
     <ProjectReference Include="PhotonWebSocket.csproj">
       <Project>{4AC24A97-E8C4-7BEA-2AF4-20A46EFC5EC0}</Project>
       <Name>PhotonWebSocket</Name>
-    </ProjectReference>
-    <ProjectReference Include="PunDemos.DemoSlotcarEditor.csproj">
-      <Project>{1772E200-FF20-75F9-3AE5-A6A366BF400E}</Project>
-      <Name>PunDemos.DemoSlotcarEditor</Name>
     </ProjectReference>
     <ProjectReference Include="PhotonUnityNetworking.Utilities.Culling.Editor.csproj">
       <Project>{B6BC2168-5F72-C7B2-EDB5-7BBEEB3EFABF}</Project>

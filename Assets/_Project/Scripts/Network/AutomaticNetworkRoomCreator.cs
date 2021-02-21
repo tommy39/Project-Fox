@@ -3,20 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Realtime;
 using Photon.Pun;
+using UnityEngine.SceneManagement;
 
 namespace IND.Network
 {
     public class AutomaticNetworkRoomCreator : MonoBehaviourPunCallbacks
     {
+        [SerializeField] private bool loadFromMainMenu = true;
         bool isConnecting = false;
 
         private void Awake()
         {
-            if (PhotonNetwork.AutomaticallySyncScene == true) //Already Init from main menu
+            if (PhotonNetwork.InRoom == true) //Already In a Room
             {
                 return;
             }
 
+            if(loadFromMainMenu == true)
+            {
+                SceneManager.LoadScene("Main Menu", LoadSceneMode.Single);
+            }
 
             PhotonNetwork.NickName = "Player";
 

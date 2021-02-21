@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using IND.Weapons;
 using IND.UI;
+using Photon.Pun;
 
-namespace IND.Player
+namespace IND.PlayerSys
 {
-    public class PlayerInventoryController : MonoBehaviour
+    public class PlayerInventoryController : MonoBehaviourPun
     {
         public WeaponData weaponData;
         public WeaponController weaponController;
@@ -31,12 +32,14 @@ namespace IND.Player
 
             weaponData = playerLoadoutManager.equippedWeapon;
 
+
+            if (!photonView.IsMine)
+                return;
+
             if (weaponData != null)
             {
                 SpawnWeapon();
             }
-
-            hudManager.AssignPlayer(this);
         }
 
         private void Update()
@@ -47,12 +50,8 @@ namespace IND.Player
         {
             animController.PlayAnimationHash(PlayerAnimatorStatics.equipWeaponAnimClass);
 
-            GameObject geo = Instantiate(weaponData.modelPrefab, rightHandTransform);
-            geo.transform.localPosition = Vector3.zero;
-            geo.transform.localRotation = Quaternion.identity;
-
-            weaponController = geo.GetComponent<WeaponController>();
-            weaponController.Init();
+            GameObject geo = PhotonNetwork.Instantiate(weaponData.modelPrefab.name, Vector3.zero, Quaternion.identity);
+           // Debug.Log(geo.name);
         }
 
         public void OnDeath()

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace IND.Player
+namespace IND.PlayerSys
 {
     public class PlayerAnimController : MonoBehaviour
     {
@@ -16,6 +16,7 @@ namespace IND.Player
 
         public void OnDeath()
         {
+            Destroy(anim.GetComponent<Photon.Pun.PhotonAnimatorView>());
             Destroy(anim);
             Destroy(this);
         }

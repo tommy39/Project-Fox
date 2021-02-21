@@ -1,10 +1,12 @@
 using IND.Teams;
 using IND.UI;
+using Photon.Pun;
 using UnityEngine;
+using IND.Network;
 
-namespace IND.Player
+namespace IND.PlayerSys
 {
-    public class PlayerManager : MonoBehaviour
+    public class PlayerManager : MonoBehaviourPun
     {
         public TeamType teamType;
         public GameObject playerPrefab;
@@ -36,45 +38,15 @@ namespace IND.Player
                 //Spawn The Player On Join
                 SpawnPlayer();
             }
-        }
-
-        public void OnTeamChange(TeamType type, bool openLoadoutInterface)
-        {
-            if (type == teamType)
-                return;
-
-            if (type != TeamType.SPEC)
-            {
-                //Remove Character Controller From The World
-                if (createdPlayerController != null)
-                {
-                    createdPlayerController.GetComponent<HealthController>().Death(true);
-                }
-            }
-
-            teamType = type;
-
-            if(openLoadoutInterface == true)
-            {
-                loadoutUIManager.OpenInterface();
-                return;
-            }
-
-            if(type != TeamType.SPEC)
-            {
-                SpawnPlayer();
-            }
-        }
-
-
+        } 
 
         public void SpawnPlayer()
         {
-            GameObject createdGEO = Instantiate(playerPrefab);
-            createdPlayerController = createdGEO.GetComponent<PlayerController>();
             Vector3 spawnPos = teamManager.GetSpawnPos(teamType);
-            createdPlayerController.transform.position = spawnPos;
-            createdPlayerController.OnSpawn(teamType, this);
+            GameObject createdGEO = PhotonNetwork.Instantiate(playerPrefab.name, spawnPos, Quaternion.identity);
+
+            createdPlayerController = createdGEO.GetComponent<PlayerController>();
+            createdPlayerController.OnSpawn(teamType);
         }
 
         public void RespawnPlayer()
@@ -84,7 +56,7 @@ namespace IND.Player
 
             if(createdPlayerController != null)
             {
-                createdPlayerController.GetComponent<HealthController>().Death(true);
+                createdPlayerController.GetComponent<HealthController>().ExternalDeath();
             }
 
             SpawnPlayer();

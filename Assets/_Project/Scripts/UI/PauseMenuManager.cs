@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using IND.Player;
+using IND.PlayerSys;
 using IND.Teams;
 
 namespace IND.UI

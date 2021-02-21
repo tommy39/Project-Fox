@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 87b53632b59c1d945bb317412a730c5c
 ModelImporter:
-  serializedVersion: 19301
+  serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
@@ -63,7 +63,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -98,6 +98,7 @@ ModelImporter:
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
     preserveHierarchy: 0
     skinWeightsMode: 0
     maxBonesPerVertex: 4
@@ -107,6 +108,9 @@ ModelImporter:
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
@@ -3915,8 +3919,7 @@ ModelImporter:
     - name: ShoulderPart2_R
       parentName: ShoulderPart1_R
       position: {x: -0.0085120965, y: 0, z: -7.9936054e-17}
-      rotation: {x: -0.000000029802319, y: 0.000000029802319, z: 0.000000029802319,
-        w: 1}
+      rotation: {x: -0.000000029802319, y: 0.000000029802319, z: 0.000000029802319, w: 1}
       scale: {x: 0.99999875, y: 0.9999997, z: 1.0000007}
     - name: Elbow_R
       parentName: ShoulderPart2_R
@@ -4061,8 +4064,7 @@ ModelImporter:
     - name: ShoulderPart2_L
       parentName: ShoulderPart1_L
       position: {x: 0.0085120965, y: 0, z: 7.105427e-17}
-      rotation: {x: 0.000000014901161, y: 0.000000074505806, z: 0.00000010430813,
-        w: 1}
+      rotation: {x: 0.000000014901161, y: 0.000000074505806, z: 0.00000010430813, w: 1}
       scale: {x: 1.0000092, y: 1.0000054, z: 1.000004}
     - name: Elbow_L
       parentName: ShoulderPart2_L
@@ -4077,8 +4079,7 @@ ModelImporter:
     - name: ElbowPart2_L
       parentName: ElbowPart1_L
       position: {x: 0.011464778, y: 8.881784e-18, z: -7.105427e-17}
-      rotation: {x: -0.000000022351742, y: 0.000000037252903, z: -0.000000029802322,
-        w: 1}
+      rotation: {x: -0.000000022351742, y: 0.000000037252903, z: -0.000000029802322, w: 1}
       scale: {x: 1.0000063, y: 1.0000026, z: 1.000002}
     - name: Wrist_L
       parentName: ElbowPart2_L
@@ -4452,6 +4453,7 @@ ModelImporter:
   animationType: 3
   humanoidOversampling: 1
   avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

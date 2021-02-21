@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using IND.Weapons;
 
-namespace IND.Player
+namespace IND.PlayerSys
 {
     public class PlayerLoadoutManager : MonoBehaviour
     {

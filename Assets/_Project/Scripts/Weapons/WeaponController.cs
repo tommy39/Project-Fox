@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using IND.HittableSurfaces;
-using IND.Player;
+using IND.Network;
+using IND.PlayerSys;
 using IND.UI;
+using Photon.Pun;
+using System.Collections;
+using UnityEngine;
 
 namespace IND.Weapons
 {
@@ -15,8 +16,10 @@ namespace IND.Weapons
         public Transform shootpoint;
 
         private PlayerAnimController animController;
-        private PlayerAimController aimController;
+        public PlayerAimController aimController;
         private GameplayHUDManager hudManager;
+
+        [HideInInspector] public PhotonView photonView;
 
         [HideInInspector] public int currentMagazineAmmoAmount;
 
@@ -27,19 +30,34 @@ namespace IND.Weapons
 
         private void Awake()
         {
-            aimController = GetComponentInParent<PlayerAimController>();
-            animController = GetComponentInParent<PlayerAnimController>();
+            photonView = GetComponent<PhotonView>();
             hudManager = FindObjectOfType<GameplayHUDManager>();
         }
 
-        public void Init()
+        private void Start()
         {
             currentMagazineAmmoAmount = weaponData.maxMagazineAmmo;
 
+            ClientController client = ClientManager.singleton.GetClientByID(photonView.ControllerActorNr);
+            PlayerInventoryController invController = client.data.characterController.GetComponent<PlayerInventoryController>();
+            transform.SetParent(invController.rightHandTransform);
+            transform.localPosition = Vector3.zero;
+            transform.localRotation = Quaternion.identity;
+
+            invController.weaponController = this;
+            aimController = GetComponentInParent<PlayerAimController>();
+            animController = GetComponentInParent<PlayerAnimController>();
+
+            hudManager.AssignPlayer(invController);
         }
+
+
 
         private void Update()
         {
+            if (!photonView.IsMine)
+                return;
+
             HandleShootingInput();
             HandleReloadInput();
         }
@@ -102,7 +120,7 @@ namespace IND.Weapons
         {
             currentMagazineAmmoAmount--;
             animController.SetAnimBool(PlayerAnimatorStatics.isFiringAnimBool, true);
-            muzzleFlashController.PlayFireParticles();
+            photonView.RPC("SendFireParticles", RpcTarget.All);
             StartCoroutine(StopWeaponFiringTimer());
             StartCoroutine(AttackCooldownTimer());
             hasFireRateCooldown = true;
@@ -122,24 +140,17 @@ namespace IND.Weapons
             hudManager.UpdateWeaponAmmoUI();
         }
 
+        [PunRPC]
+        private void SendFireParticles()
+        {
+            muzzleFlashController.PlayFireParticles();
+        }
+
         private void FireSingleBullet()
         {
             if (Physics.Raycast(shootpoint.position, rayDirection, out rayHit, 100f, aimController.aimLayerMasks))
             {
-                HittableSurfaceController hitSurfaceController = null;
-                hitSurfaceController = rayHit.transform.GetComponent<HittableSurfaceController>();
-                if (hitSurfaceController != null)
-                {
-                    hitSurfaceController.ObjectHit(rayHit.point, -rayHit.normal);
-                }
-
-                HealthHitboxController hitboxController = null;
-                hitboxController = rayHit.transform.GetComponent<HealthHitboxController>();
-                if (hitboxController != null)
-                {
-                    hitboxController.OnHitboxHit(this);
-                }
-
+                OnRayHitObject(rayHit);
             }
         }
 
@@ -162,21 +173,31 @@ namespace IND.Weapons
                     rayDirection = newHitTarget - shootpoint.position;
                     if (Physics.Raycast(shootpoint.position, rayDirection, out rayHit, 100f, aimController.aimLayerMasks))
                     {
-                        HittableSurfaceController hitSurfaceController = null;
-                        hitSurfaceController = rayHit.transform.GetComponent<HittableSurfaceController>();
-                        if (hitSurfaceController != null)
-                        {
-                            hitSurfaceController.ObjectHit(rayHit.point, -rayHit.normal);
-                        }
-
-                        HealthHitboxController hitboxController = null;
-                        hitboxController = rayHit.transform.GetComponent<HealthHitboxController>();
-                        if (hitboxController != null)
-                        {
-                            hitboxController.OnHitboxHit(this);
-                        }
+                        OnRayHitObject(rayHit);
                     }
-                }           
+                }
+            }
+        }
+
+        private void OnRayHitObject(RaycastHit hit)
+        {
+            HittableSurfaceController hitSurfaceController = null;
+            hitSurfaceController = hit.transform.GetComponent<HittableSurfaceController>();
+            if (hitSurfaceController != null)
+            {
+                hitSurfaceController.OnObjectHit(rayHit.point, -rayHit.normal);
+            }
+
+            HealthHitboxController hitboxController = null;
+            hitboxController = hit.transform.GetComponent<HealthHitboxController>();
+            if (hitboxController != null)
+            {
+                hitboxController.OnHitboxHit(this);
+            }
+
+            if (hitboxController == null)
+            {
+
             }
         }
 

@@ -9,15 +9,12 @@ F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\nunit.framework.dl
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\Photon3Unity3D.dll
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\PhotonChat.dll
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\PhotonRealtime.dll
-F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\PhotonUnityNetworking.Demos.dll
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\PhotonUnityNetworking.dll
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\PhotonUnityNetworking.Editor.dll
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\PhotonUnityNetworking.Utilities.Culling.Editor.dll
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\PhotonUnityNetworking.Utilities.dll
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\PhotonUnityNetworking.Utilities.PhotonPlayer.Editor.dll
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\PhotonWebSocket.dll
-F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\PunDemos.DemoHubEditor.dll
-F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\PunDemos.DemoSlotcarEditor.dll
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\System.AppContext.dll
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\System.Collections.Concurrent.dll
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\System.Collections.dll
@@ -237,7 +234,6 @@ F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\PhotonChat.pdb
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\PhotonRealtime.pdb
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\PhotonUnityNetworking.Utilities.pdb
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\PhotonUnityNetworking.pdb
-F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\PhotonUnityNetworking.Demos.pdb
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\PhotonWebSocket.pdb
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\UnityEngine.pdb
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\UnityEngine.AIModule.pdb
@@ -318,12 +314,10 @@ F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\Unity.Postprocessi
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\UnityEditor.UI.pdb
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\Unity.Rider.Editor.pdb
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\Unity.ProGrids.Editor.pdb
-F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\PunDemos.DemoHubEditor.pdb
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\Unity.ShaderGraph.Editor.pdb
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\com.unity.cinemachine.editor.pdb
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\Unity.ProBuilder.AssetIdRemapUtility.pdb
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\Unity.Timeline.Editor.pdb
-F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\PunDemos.DemoSlotcarEditor.pdb
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\Unity.RenderPipelines.Core.Editor.pdb
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\PhotonUnityNetworking.Utilities.Culling.Editor.pdb
 F:\UnityProjects\ProjectFox\Project-Fox\Temp\Bin\Debug\Player\Photon3Unity3D.pdb

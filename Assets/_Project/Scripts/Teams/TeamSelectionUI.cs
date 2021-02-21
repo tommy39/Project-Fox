@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using IND.Player;
+using IND.PlayerSys;
 using IND.UI;
 
 namespace IND.Teams
@@ -45,7 +45,7 @@ namespace IND.Teams
         private void SetTeam(TeamType type)
         {
             CloseInterface();
-            PlayerManager.singleton.OnTeamChange(type, true);
+            TeamManager.singleton.OnTeamChange(type, true, false);
         }
     }
 }

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using IND.Player;
+using IND.PlayerSys;
 using TMPro;
 using UnityEngine.UI;
 

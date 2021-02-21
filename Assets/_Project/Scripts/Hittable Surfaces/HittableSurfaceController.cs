@@ -1,14 +1,29 @@
+using Photon.Pun;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace IND.HittableSurfaces
 {
+    [RequireComponent(typeof(PhotonView))]
     public class HittableSurfaceController : MonoBehaviour
     {
         [SerializeField] private HittableSurfaceType surfaceType;
 
-        public void ObjectHit(Vector3 hitPosition, Vector3 direction)
+        [HideInInspector] public PhotonView photonView;
+
+        private void Start()
+        {
+            photonView = GetComponent<PhotonView>();
+        }
+
+        public void OnObjectHit(Vector3 hitPosition, Vector3 direction)
+        {
+            object[] objectHitData = { hitPosition, direction };
+            photonView.RPC("ObjectHit", RpcTarget.All, objectHitData);
+        }
+
+        [PunRPC]
+        private void ObjectHit(Vector3 hitPosition, Vector3 direction)
         {
             HittableSurfaceParticleController particleController = null;
             switch (surfaceType)

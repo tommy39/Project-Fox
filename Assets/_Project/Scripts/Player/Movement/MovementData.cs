@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace IND.Player
+namespace IND.PlayerSys
 {
     [CreateAssetMenu(fileName = "Movement Data", menuName = "IND/Player/Movement Data")]
     public class MovementData : ScriptableObject

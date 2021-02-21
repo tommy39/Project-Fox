@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using IND.Weapons;
 using UnityEngine.UI;
-using IND.Player;
+using IND.PlayerSys;
 
 namespace IND.UI {
     public class ChooseableWeaponSlotUIController : MonoBehaviour
