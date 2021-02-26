@@ -144,6 +144,8 @@
     <Compile Include="Assets\_Project\Scripts\Spectator\SpectatorManagerUI.cs" />
     <Compile Include="Assets\_Project\Scripts\Ragdolls\RagdollManager.cs" />
     <Compile Include="Assets\_Project\Scripts\KOTH\KOTHEndOfRoundUIManager.cs" />
+    <Compile Include="Assets\_Project\Scripts\UI\PlayerHealthTrackerUIController.cs" />
+    <Compile Include="Assets\_Project\Scripts\UI\HealthTrackerUIManager.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

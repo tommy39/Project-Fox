@@ -17,10 +17,12 @@ namespace IND.Weapons
         public WeaponFireRate fireRateMode;
         public float firingWeaponAnimTimer = 0.1f;
         public float fireRate = 0.1f;
-        public float weaponDamage = 100f;
         public float reloadDuration = 1f;
         public int maxMagazineAmmo = 5;
         public float minDistanceFromWallToShoot = 1f;
+
+        [Header("Damage")]
+        public float weaponDamage = 100f;
 
         [Header("Bullet Mode")]
         public WeaponBulletType bulletType;

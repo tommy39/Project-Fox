@@ -9,6 +9,7 @@ namespace IND.PlayerSys
     public class HealthController : MonoBehaviourPun
     {
         public float currentHealth = 100f;
+         public float maxHealth = 100;
         private List<HealthHitboxController> childHitboxes = new List<HealthHitboxController>();
         private RagdollController ragdollController;
 

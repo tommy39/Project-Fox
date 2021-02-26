@@ -3,6 +3,7 @@ using IND.Network;
 using IND.Teams;
 using Photon.Pun;
 using UnityEngine;
+using IND.UI;
 
 namespace IND.PlayerSys
 {
@@ -19,6 +20,7 @@ namespace IND.PlayerSys
         [SerializeField] private Material blueSurfaceMat = default;
         [SerializeField] private Material blueJointsMat = default;
 
+        private PlayerHealthTrackerUIController healthTrackerUI;
 
         private Camera cam;
         private CinemachineVirtualCamera vcam;
@@ -35,6 +37,7 @@ namespace IND.PlayerSys
             }
             AssignClientController(photonView.ControllerActorNr);
             AssignPlayerCharacterToClient();
+            CreateHealthTracker();
         }
 
         public void OnSpawn(TeamType team)
@@ -43,6 +46,10 @@ namespace IND.PlayerSys
             photonView.RPC("AssignMaterials", RpcTarget.AllBuffered);
         }
 
+        private void CreateHealthTracker()
+        {
+           healthTrackerUI =  HealthTrackerUIManager.singleton.CreateTracker(this);
+        }
         
         private void AssignClientController(int id)
         {

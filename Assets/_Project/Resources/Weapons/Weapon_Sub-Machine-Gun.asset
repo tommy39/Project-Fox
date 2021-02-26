@@ -18,11 +18,11 @@ MonoBehaviour:
   weaponAnimID: 0
   fireRateMode: 1
   firingWeaponAnimTimer: 0.1
-  fireRate: 0.04
-  weaponDamage: 100
+  fireRate: 0.05
   reloadDuration: 1.8
   maxMagazineAmmo: 71
   minDistanceFromWallToShoot: 1.04
+  weaponDamage: 27
   bulletType: 0
   bulletAmounts: 1
   spreadAngle: 0

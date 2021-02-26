@@ -256,7 +256,7 @@ MonoBehaviour:
     m_Bits: 43008
   aimWallCollisionLayerMasks:
     serializedVersion: 2
-    m_Bits: 32768
+    m_Bits: 40960
   aimTargetPrefab: {fileID: 4282579475448828058, guid: cf2866057e49b83419ab855033793f6b, type: 3}
   aimTargetLinePrefab: {fileID: 9215954920641779591, guid: 6b083f7b81840dc45bf763e5d3e77ee7, type: 3}
   blockedAimTargetLinePrefab: {fileID: 7989252287949464467, guid: 12d5cf2462038ec4bb63b50d078227ca, type: 3}
@@ -275,6 +275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 100
+  maxHealth: 100
   isDead: 0
   isDummy: 0
 --- !u!114 &2916898033336688631
