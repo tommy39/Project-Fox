@@ -10,9 +10,13 @@ namespace IND.Network
     public class ClientData
     {
         public int clientID;
+        public int clientPing;
         public string clientName;
         public GameObject clientGEO;
         public TeamType team = TeamType.SPEC;
         public PlayerController characterController;
+
+        public int kills;
+        public int deaths;
     }
 }

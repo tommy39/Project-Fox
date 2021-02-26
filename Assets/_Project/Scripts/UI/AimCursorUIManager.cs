@@ -20,5 +20,10 @@ namespace IND.UI
         {
             transform.position = cam.WorldToScreenPoint(worldPos);
         }
+
+        public void CloseElement()
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

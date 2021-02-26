@@ -57,6 +57,25 @@ MonoBehaviour:
   - OnPlayParticles
   - ChangeWeapon
   - TakeDamage
+  - OnRespawn
+  - AddScore
+  - ChangeFlagOwner
+  - OnFlagMovedDown
+  - OnFlagMovedUp
+  - AddClient
+  - AddDeathToClient
+  - AddKillToClient
+  - OnClientTeamChange
+  - UpdatePing
+  - UpdateKillsAndDeaths
+  - AddFriendlyFireKillToClient
+  - OnClientJoined
+  - OnPlayerJoinedSpectator
+  - OnPlayerJoinedRedOrBlueTeam
+  - RoundEnd
+  - ActiveNewRound
+  - EndRound
+  - ExternalDeath
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

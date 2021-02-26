@@ -47,7 +47,6 @@ namespace IND.Network
                 }
             }
 
-            Debug.Log("Client Not Found");  
             return null;
         }
     }

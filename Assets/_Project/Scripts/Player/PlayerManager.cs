@@ -2,7 +2,6 @@ using IND.Teams;
 using IND.UI;
 using Photon.Pun;
 using UnityEngine;
-using IND.Network;
 
 namespace IND.PlayerSys
 {
@@ -21,7 +20,7 @@ namespace IND.PlayerSys
         {
             singleton = this;
             teamManager = FindObjectOfType<TeamManager>();
-            teamSelectionUIManager =TeamSelectionUI.singleton;
+            teamSelectionUIManager = TeamSelectionUI.singleton;
         }
 
         private void Start()
@@ -38,7 +37,7 @@ namespace IND.PlayerSys
                 //Spawn The Player On Join
                 SpawnPlayer();
             }
-        } 
+        }
 
         public void SpawnPlayer()
         {
@@ -54,10 +53,14 @@ namespace IND.PlayerSys
             if (teamType == TeamType.SPEC)
                 return;
 
-            if(createdPlayerController != null)
+            HealthController healthCon = createdPlayerController.GetComponent<HealthController>();
+
+            if (healthCon.isDead == false)
             {
-                createdPlayerController.GetComponent<HealthController>().ExternalDeath();
+                healthCon.photonView.RPC("ExternalDeath", RpcTarget.All);
             }
+
+            healthCon.photonView.RPC("OnRespawn", RpcTarget.All);
 
             SpawnPlayer();
         }

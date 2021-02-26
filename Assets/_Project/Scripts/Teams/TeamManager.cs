@@ -1,5 +1,6 @@
 using IND.Network;
 using IND.PlayerSys;
+using IND.Spectator;
 using IND.UI;
 using Photon.Pun;
 using System.Collections;
@@ -49,7 +50,6 @@ namespace IND.Teams
                 {
                     AssignTeamToClient(item.data.clientID, item.data.team);
                 }
-
             }
         }
 
@@ -73,8 +73,12 @@ namespace IND.Teams
             {
                 photonView.RPC("UpdateClientData", RpcTarget.All, UpdateClientDataArray);
             }
+
             photonView.RPC("AssignTeamToClient", RpcTarget.All, UpdateClientDataArray);
             PlayerManager.singleton.teamType = type;
+            PlayerKillScoreboardManager.singleton.photonView.RPC("OnClientTeamChange", RpcTarget.AllBuffered, localClient.data.clientID);
+        
+            localClient.OnTeamChanged();
 
             if (openLoadoutInterface == true)
             {
@@ -125,11 +129,6 @@ namespace IND.Teams
             }
         }
 
-        public TeamType GetClientsCurTeam(int id)
-        {
-            return TeamType.SPEC;
-        }
-
         public List<int> FindClientInTeams(int id)
         {
             for (int i = 0; i < redTeamClients.Count; i++)
@@ -163,7 +162,7 @@ namespace IND.Teams
             switch (teamType)
             {
                 case TeamType.SPEC:
-                    return Vector3.zero;
+                    return GetSpawnPosInCollider(specTeamSpawn);
                 case TeamType.BLUE:
                     return GetSpawnPosInCollider(blueTeamSpawn);
                 case TeamType.RED:

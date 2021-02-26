@@ -46,10 +46,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data:
     clientID: 0
+    clientPing: 0
     clientName: 
     clientGEO: {fileID: 0}
     team: 0
     characterController: {fileID: 0}
+    kills: 0
+    deaths: 0
 --- !u!114 &3469220927946473656
 MonoBehaviour:
   m_ObjectHideFlags: 0

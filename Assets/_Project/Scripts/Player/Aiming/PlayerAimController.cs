@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using IND.UI;
-using IND.Weapons;
 using Photon.Pun;
+using UnityEngine;
 
 namespace IND.PlayerSys
 {
@@ -34,7 +31,7 @@ namespace IND.PlayerSys
         private RaycastHit rayAimHitPoint;
         private RaycastHit wallCheckRay;
         private bool isAimHittingCollision = false;
-        [HideInInspector] public bool isPlayerTooCloseToWall = false;
+        public bool isPlayerTooCloseToWall = false;
 
         private void Awake()
         {
@@ -48,7 +45,7 @@ namespace IND.PlayerSys
 
         private void Start()
         {
-            if(aimCursorUI == null)
+            if (aimCursorUI == null)
             {
                 aimCursorUI = AimCursorUIManager.singleton;
             }
@@ -136,6 +133,7 @@ namespace IND.PlayerSys
                 UpdateAimTargetPosition();
                 UpdateAimLineRender();
 
+
                 if (Input.GetMouseButtonUp(1))
                 {
                     ToggleAimState(false);
@@ -198,6 +196,13 @@ namespace IND.PlayerSys
                 isAimHittingCollision = false;
                 blockedAimTargetLineRenderer.gameObject.SetActive(false);
             }
+
+            if (isPlayerTooCloseToWall == true)
+            {
+                blockedAimTargetLineRenderer.gameObject.SetActive(true);
+                blockedAimTargetLineRenderer.SetPosition(0, rayAimHitPoint.point);
+                blockedAimTargetLineRenderer.SetPosition(1, aimTarget.position);
+            }
         }
 
         private void UpdateAimLineRender()
@@ -229,11 +234,11 @@ namespace IND.PlayerSys
 
             if (val == false)
             {
-              //  regularAimCursorController.gameObject.SetActive(true);
+                //  regularAimCursorController.gameObject.SetActive(true);
             }
             else
             {
-              //  regularAimCursorController.gameObject.SetActive(false);
+                //  regularAimCursorController.gameObject.SetActive(false);
             }
         }
 

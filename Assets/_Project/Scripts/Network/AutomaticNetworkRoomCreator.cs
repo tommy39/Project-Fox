@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Photon.Realtime;
 using Photon.Pun;
+using Photon.Realtime;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace IND.Network
@@ -11,15 +9,21 @@ namespace IND.Network
     {
         [SerializeField] private bool loadFromMainMenu = true;
         bool isConnecting = false;
+        public bool loadArtScene = true;
 
         private void Awake()
         {
+
+            if (loadArtScene)
+            {
+                SceneManager.LoadScene("Combat_Demo_Art", LoadSceneMode.Additive);
+            }
             if (PhotonNetwork.InRoom == true) //Already In a Room
             {
                 return;
             }
 
-            if(loadFromMainMenu == true)
+            if (loadFromMainMenu == true)
             {
                 SceneManager.LoadScene("Main Menu", LoadSceneMode.Single);
             }

@@ -21,8 +21,10 @@ namespace IND.UI
         private PlayerManager playersManager;
         private TeamSelectionUI teamSelectionUI;
 
+        public static PauseMenuManager singleton;
         private void Awake()
         {
+            singleton = this;
             playersManager = FindObjectOfType<PlayerManager>();
 
             respawnBtn.onClick.AddListener(() => { RespawnButtonPressed(); });

@@ -47,8 +47,10 @@ namespace IND.Weapons
             invController.weaponController = this;
             aimController = GetComponentInParent<PlayerAimController>();
             animController = GetComponentInParent<PlayerAnimController>();
-
-            hudManager.AssignPlayer(invController);
+            if (photonView.IsMine == true)
+            {
+                hudManager.AssignPlayer(invController);
+            }
         }
 
 
@@ -193,11 +195,6 @@ namespace IND.Weapons
             if (hitboxController != null)
             {
                 hitboxController.OnHitboxHit(this);
-            }
-
-            if (hitboxController == null)
-            {
-
             }
         }
 
