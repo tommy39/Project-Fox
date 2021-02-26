@@ -150,7 +150,7 @@ namespace IND.Weapons
 
         private void FireSingleBullet()
         {
-            if (Physics.Raycast(shootpoint.position, rayDirection, out rayHit, 100f, aimController.aimLayerMasks))
+            if (Physics.Raycast(shootpoint.position, rayDirection, out rayHit, 100f, aimController.hittableSurfaces))
             {
                 OnRayHitObject(rayHit);
             }
@@ -158,7 +158,7 @@ namespace IND.Weapons
 
         private void FireSpreadBullet()
         {
-            if (Physics.Raycast(shootpoint.position, rayDirection, out rayHit, 100f, aimController.aimLayerMasks))
+            if (Physics.Raycast(shootpoint.position, rayDirection, out rayHit, 100f, aimController.hittableSurfaces))
             {
                 for (int i = 0; i < weaponData.bulletAmounts; i++)
                 {

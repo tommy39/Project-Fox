@@ -19,6 +19,9 @@ namespace IND.Teams
         public List<int> redTeamClients = new List<int>();
         public List<int> specClients = new List<int>();
 
+        public Quaternion blueTeamSpawnRot;
+        public Quaternion redTeamSpawnRot;
+
         public static TeamManager singleton;
         private void Awake()
         {

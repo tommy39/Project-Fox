@@ -42,7 +42,19 @@ namespace IND.PlayerSys
         public void SpawnPlayer()
         {
             Vector3 spawnPos = teamManager.GetSpawnPos(teamType);
-            GameObject createdGEO = PhotonNetwork.Instantiate(playerPrefab.name, spawnPos, Quaternion.identity);
+            Quaternion spawnRot = Quaternion.identity;
+            switch (teamType)
+            {
+                case TeamType.SPEC:
+                    break;
+                case TeamType.BLUE:
+                    spawnRot = teamManager.blueTeamSpawnRot;
+                    break;
+                case TeamType.RED:
+                    spawnRot = teamManager.redTeamSpawnRot;
+                    break;
+            }
+            GameObject createdGEO = PhotonNetwork.Instantiate(playerPrefab.name, spawnPos, spawnRot);
 
             createdPlayerController = createdGEO.GetComponent<PlayerController>();
             createdPlayerController.OnSpawn(teamType);

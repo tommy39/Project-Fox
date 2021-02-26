@@ -9,6 +9,7 @@ namespace IND.PlayerSys
 
         public bool isAiming = false;
         public LayerMask aimLayerMasks;
+        public LayerMask hittableSurfaces;
         [SerializeField] private LayerMask aimWallCollisionLayerMasks;
         [SerializeField] private GameObject aimTargetPrefab;
         [SerializeField] private GameObject aimTargetLinePrefab;
@@ -104,6 +105,11 @@ namespace IND.PlayerSys
                 }
             }
 
+            if(isAiming == false)
+            {
+                blockedAimTargetLineRenderer.gameObject.SetActive(false);
+            }
+
             if (isAiming == false && movementController.isSprinting == true)
             {
                 return;
@@ -189,19 +195,12 @@ namespace IND.PlayerSys
             {
                 isAimHittingCollision = true;
                 blockedAimTargetLineRenderer.gameObject.SetActive(true);
-                UpdateBlockedAimLineRender();
+                //  UpdateBlockedAimLineRender();
             }
             else
             {
                 isAimHittingCollision = false;
                 blockedAimTargetLineRenderer.gameObject.SetActive(false);
-            }
-
-            if (isPlayerTooCloseToWall == true)
-            {
-                blockedAimTargetLineRenderer.gameObject.SetActive(true);
-                blockedAimTargetLineRenderer.SetPosition(0, rayAimHitPoint.point);
-                blockedAimTargetLineRenderer.SetPosition(1, aimTarget.position);
             }
         }
 
@@ -215,6 +214,23 @@ namespace IND.PlayerSys
             else
             {
                 aimTargetLineRenderer.SetPosition(1, rayAimHitPoint.point);
+            }
+
+            if (isPlayerTooCloseToWall == true)
+            {
+                blockedAimTargetLineRenderer.gameObject.SetActive(true);
+                blockedAimTargetLineRenderer.SetPosition(0, inventoryController.weaponController.shootpoint.position);
+                blockedAimTargetLineRenderer.SetPosition(1, aimTarget.position);
+
+
+            }
+            else if (isAimHittingCollision == false && isPlayerTooCloseToWall == false)
+            {
+                blockedAimTargetLineRenderer.gameObject.SetActive(false);
+            }
+            else
+            {
+                UpdateBlockedAimLineRender();
             }
         }
 

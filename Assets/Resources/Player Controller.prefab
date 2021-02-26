@@ -251,6 +251,9 @@ MonoBehaviour:
   aimLayerMasks:
     serializedVersion: 2
     m_Bits: 14355
+  hittableSurfaces:
+    serializedVersion: 2
+    m_Bits: 43008
   aimWallCollisionLayerMasks:
     serializedVersion: 2
     m_Bits: 32768
