@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Weapon_Sub-Machine-Gun
   m_EditorClassIdentifier: 
   weaponName: Sub Machine Gun
-  weaponDescription: 
+  weaponDescription: A Rapid SMG dealing 15 damage per hit with a magazine capacity
+    of 71
   modelPrefab: {fileID: 1979258102317991910, guid: 36888b3495c012b4abe4ae09163e480c, type: 3}
   weaponAnimID: 0
   fireRateMode: 1
@@ -22,7 +23,7 @@ MonoBehaviour:
   reloadDuration: 1.8
   maxMagazineAmmo: 71
   minDistanceFromWallToShoot: 1.04
-  weaponDamage: 27
+  weaponDamage: 15
   bulletType: 0
   bulletAmounts: 1
   spreadAngle: 0

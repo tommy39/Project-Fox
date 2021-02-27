@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: Weapon_Musket
   m_EditorClassIdentifier: 
   weaponName: Musket
-  weaponDescription: A Single Shot Musket
+  weaponDescription: A Single Shot Musket that deals 100 damage per shot
   modelPrefab: {fileID: 977133010706300622, guid: 6eaff9f232e7a78418743a314c081685, type: 3}
   weaponAnimID: 0
   fireRateMode: 0
   firingWeaponAnimTimer: 0.1
   fireRate: 0.1
-  weaponDamage: 100
   reloadDuration: 1.8
   maxMagazineAmmo: 1
   minDistanceFromWallToShoot: 1.04
+  weaponDamage: 100
   bulletType: 0
   bulletAmounts: 1
   spreadAngle: 0

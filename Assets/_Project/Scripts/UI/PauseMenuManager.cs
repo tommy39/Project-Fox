@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using IND.PlayerSys;
 using IND.Teams;
+using Photon.Pun;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace IND.UI
 {
@@ -11,6 +11,7 @@ namespace IND.UI
     {
         [SerializeField] private GameObject childObject = default;
         [SerializeField] private Button respawnBtn;
+        [SerializeField] private Button changeLoadoutBtn;
         [SerializeField] private Button changeTeamBtn;
         [SerializeField] private Button optionsBtn;
         [SerializeField] private Button quitToMainMenuBtn;
@@ -20,6 +21,7 @@ namespace IND.UI
 
         private PlayerManager playersManager;
         private TeamSelectionUI teamSelectionUI;
+        private WeaponLoadoutUIManager loadoutManagerUI;
 
         public static PauseMenuManager singleton;
         private void Awake()
@@ -28,6 +30,7 @@ namespace IND.UI
             playersManager = FindObjectOfType<PlayerManager>();
 
             respawnBtn.onClick.AddListener(() => { RespawnButtonPressed(); });
+            changeLoadoutBtn.onClick.AddListener(() => { OnChangeLoadoutButtonPressed(); });
             changeTeamBtn.onClick.AddListener(() => { ChangeTeamButtonPressed(); });
             optionsBtn.onClick.AddListener(() => { OptionsButtonPressed(); });
             quitToMainMenuBtn.onClick.AddListener(() => { QuitToMainMenuButtonPressed(); });
@@ -38,6 +41,7 @@ namespace IND.UI
 
         private void Start()
         {
+            loadoutManagerUI = WeaponLoadoutUIManager.singleton;
             teamSelectionUI = TeamSelectionUI.singleton;
         }
 
@@ -61,7 +65,7 @@ namespace IND.UI
             childObject.SetActive(val);
             isMenuActive = val;
 
-            if(val == false)
+            if (val == false)
             {
                 UIManager.singleton.OnUIElementDeActivated();
             }
@@ -83,6 +87,12 @@ namespace IND.UI
             teamSelectionUI.OpenInterface();
         }
 
+        private void OnChangeLoadoutButtonPressed()
+        {
+            ToggleMenu(false);
+            loadoutManagerUI.OpenInterface();
+        }
+
         private void OptionsButtonPressed()
         {
 
@@ -90,7 +100,8 @@ namespace IND.UI
 
         private void QuitToMainMenuButtonPressed()
         {
-
+            PhotonNetwork.Disconnect();
+            SceneManager.LoadScene("Main Menu");
         }
 
         private void QuitGameButtonPressed()

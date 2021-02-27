@@ -13,16 +13,17 @@ MonoBehaviour:
   m_Name: Weapon_Shotgun_DoubleBarrel
   m_EditorClassIdentifier: 
   weaponName: Double Barrel
-  weaponDescription: A Double Barrel Shotgun
+  weaponDescription: A Double Barrel Shotgun that applies a spread effect when shot
+    dealing 10 dmg per hit
   modelPrefab: {fileID: 4007005166309913283, guid: 62087067839317545aeaa563fe3d832f, type: 3}
   weaponAnimID: 0
   fireRateMode: 0
   firingWeaponAnimTimer: 0.1
   fireRate: 0.1
-  weaponDamage: 100
   reloadDuration: 1.8
   maxMagazineAmmo: 2
   minDistanceFromWallToShoot: 1.04
+  weaponDamage: 100
   bulletType: 1
   bulletAmounts: 10
   spreadAngle: 0.16

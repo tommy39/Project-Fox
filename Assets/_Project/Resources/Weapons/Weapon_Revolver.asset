@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Weapon_Revolver
   m_EditorClassIdentifier: 
   weaponName: Revolver
-  weaponDescription: A Revolver
+  weaponDescription: 'A Six shot revolver that deals 45 damage per shot '
   modelPrefab: {fileID: 2599148165807048002, guid: 77bd8133900905345b7b969b6613a259, type: 3}
   weaponAnimID: 0
   fireRateMode: 0

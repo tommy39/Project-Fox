@@ -13,16 +13,17 @@ MonoBehaviour:
   m_Name: Weapon_Shotgun_Pump
   m_EditorClassIdentifier: 
   weaponName: Pump Shotgun
-  weaponDescription: 
+  weaponDescription: A Pump Shotgun that applies a spread effect when shot dealing
+    5 dmg per hit
   modelPrefab: {fileID: 8238924644045583309, guid: 5c437d28cb96780438760d1ed079ea6b, type: 3}
   weaponAnimID: 0
   fireRateMode: 0
   firingWeaponAnimTimer: 0.1
-  fireRate: 0.1
-  weaponDamage: 100
+  fireRate: 0.3
   reloadDuration: 1.8
   maxMagazineAmmo: 6
   minDistanceFromWallToShoot: 1.04
+  weaponDamage: 5
   bulletType: 1
   bulletAmounts: 10
   spreadAngle: 0.16

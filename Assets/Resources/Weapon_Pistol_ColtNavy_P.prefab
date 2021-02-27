@@ -175,6 +175,8 @@ MonoBehaviour:
   weaponData: {fileID: 11400000, guid: a10b459b80915734380ca871521a8076, type: 2}
   muzzleFlashController: {fileID: 496254645331016021}
   shootpoint: {fileID: 5510380063656313168}
+  aimController: {fileID: 0}
+  photonView: {fileID: 0}
   currentMagazineAmmoAmount: 0
 --- !u!114 &-1174867982723709173
 MonoBehaviour:

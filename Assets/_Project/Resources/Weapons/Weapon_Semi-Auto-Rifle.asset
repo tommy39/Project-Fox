@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Weapon_Semi-Auto-Rifle
   m_EditorClassIdentifier: 
   weaponName: Semi Auto Rifle
-  weaponDescription: 
+  weaponDescription: A Semi automatic rifle that deals 50 damage per shot
   modelPrefab: {fileID: 4150850368188641653, guid: c22cc321dcfa1854bbddeaad73c6808b, type: 3}
   weaponAnimID: 0
   fireRateMode: 0
@@ -22,7 +22,7 @@ MonoBehaviour:
   reloadDuration: 1.8
   maxMagazineAmmo: 8
   minDistanceFromWallToShoot: 1.04
-  weaponDamage: 55
+  weaponDamage: 50
   bulletType: 0
   bulletAmounts: 1
   spreadAngle: 0
