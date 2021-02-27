@@ -204,6 +204,7 @@ MonoBehaviour:
   standingHitbox: {fileID: 8591771281755046311}
   crouchedHitbox: {fileID: 2858278867336431728}
   proneHitbox: {fileID: 1577076146621447456}
+  isPressingMovementKeys: 0
   isGrounded: 0
   groundingLayers:
     serializedVersion: 2
@@ -247,6 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 990ab5f2e3bf84f439795c8355376ae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aimData: {fileID: 11400000, guid: a59b69fcf771c884082ff89a93c6429c, type: 2}
   isAiming: 0
   aimLayerMasks:
     serializedVersion: 2
@@ -260,7 +262,9 @@ MonoBehaviour:
   aimTargetPrefab: {fileID: 4282579475448828058, guid: cf2866057e49b83419ab855033793f6b, type: 3}
   aimTargetLinePrefab: {fileID: 9215954920641779591, guid: 6b083f7b81840dc45bf763e5d3e77ee7, type: 3}
   blockedAimTargetLinePrefab: {fileID: 7989252287949464467, guid: 12d5cf2462038ec4bb63b50d078227ca, type: 3}
+  aimRadiusPrefab: {fileID: 1006929196129869203, guid: fdac886e55bd2b44fa0a4723cae3b514, type: 3}
   aimTarget: {fileID: 0}
+  aimRadiusController: {fileID: 0}
   isPlayerTooCloseToWall: 0
 --- !u!114 &2916898033336688630
 MonoBehaviour:

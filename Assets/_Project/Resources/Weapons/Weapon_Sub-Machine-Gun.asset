@@ -23,6 +23,10 @@ MonoBehaviour:
   reloadDuration: 1.8
   maxMagazineAmmo: 71
   minDistanceFromWallToShoot: 1.04
+  increaseAimRadiusWhenShotAmount: 0.2
+  aimContractionCooldown: 0.3
+  effectiveRange: 7.12
+  radiusIncreaseForOutsideEffectiveRangePerMetre: 0.1
   weaponDamage: 15
   bulletType: 0
   bulletAmounts: 1

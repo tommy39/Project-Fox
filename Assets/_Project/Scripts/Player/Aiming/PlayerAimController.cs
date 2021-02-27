@@ -7,6 +7,7 @@ namespace IND.PlayerSys
     public class PlayerAimController : MonoBehaviourPun
     {
 
+        [SerializeField] private PlayerAimData aimData;
         public bool isAiming = false;
         public LayerMask aimLayerMasks;
         public LayerMask hittableSurfaces;
@@ -14,10 +15,12 @@ namespace IND.PlayerSys
         [SerializeField] private GameObject aimTargetPrefab;
         [SerializeField] private GameObject aimTargetLinePrefab;
         [SerializeField] private GameObject blockedAimTargetLinePrefab;
+        [SerializeField] private GameObject aimRadiusPrefab;
         [HideInInspector] public Transform aimTarget;
         private LineRenderer aimTargetLineRenderer;
         private LineRenderer blockedAimTargetLineRenderer;
         private MeshRenderer aimTargetMeshRenderer;
+        public AimRadiusController aimRadiusController;
 
         private PlayerInventoryController inventoryController;
         private PlayerMovementController movementController;
@@ -33,7 +36,6 @@ namespace IND.PlayerSys
         private RaycastHit wallCheckRay;
         private bool isAimHittingCollision = false;
         public bool isPlayerTooCloseToWall = false;
-
         private void Awake()
         {
             inventoryController = GetComponent<PlayerInventoryController>();
@@ -72,6 +74,13 @@ namespace IND.PlayerSys
                 GameObject geo = Instantiate(blockedAimTargetLinePrefab);
                 blockedAimTargetLineRenderer = geo.GetComponent<LineRenderer>();
                 blockedAimTargetLineRenderer.gameObject.SetActive(false);
+            }
+
+            if(aimRadiusController == null)
+            {
+                GameObject geo = Instantiate(aimRadiusPrefab);
+                aimRadiusController = geo.GetComponent<AimRadiusController>();
+                aimRadiusController.AssignPlayer(this);
             }
 
             aimTargetMeshRenderer = aimTarget.gameObject.GetComponentInChildren<MeshRenderer>();
@@ -247,6 +256,7 @@ namespace IND.PlayerSys
             aimTargetMeshRenderer.gameObject.SetActive(false); //Currently Removed So Setting To False
             aimTargetLineRenderer.gameObject.SetActive(val);
             aimCursorUI.gameObject.SetActive(val);
+            aimRadiusController.ToggleRenderer(val);
 
             if (val == false)
             {

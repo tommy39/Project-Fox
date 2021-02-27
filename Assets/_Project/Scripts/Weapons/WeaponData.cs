@@ -21,6 +21,12 @@ namespace IND.Weapons
         public int maxMagazineAmmo = 5;
         public float minDistanceFromWallToShoot = 1f;
 
+        [Header ("Aim Radius")]
+        public float increaseAimRadiusWhenShotAmount = 0.2f;
+        public float aimContractionCooldown = 0.15f;
+        public float effectiveRange = 20f;
+        public float radiusIncreaseForOutsideEffectiveRangePerMetre = 0.1f;
+
         [Header("Damage")]
         public float weaponDamage = 100f;
 

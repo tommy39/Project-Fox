@@ -146,6 +146,9 @@
     <Compile Include="Assets\_Project\Scripts\KOTH\KOTHEndOfRoundUIManager.cs" />
     <Compile Include="Assets\_Project\Scripts\UI\PlayerHealthTrackerUIController.cs" />
     <Compile Include="Assets\_Project\Scripts\UI\HealthTrackerUIManager.cs" />
+    <Compile Include="Assets\_Project\Scripts\Player\Aiming\AimRadiusController.cs" />
+    <Compile Include="Assets\_Project\Scripts\Player\Aiming\PlayerAimData.cs" />
+    <Compile Include="Assets\_Project\Scripts\Player\Aiming\AimRadiusModifier.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

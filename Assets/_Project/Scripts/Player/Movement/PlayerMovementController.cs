@@ -1,7 +1,5 @@
 using Cinemachine;
 using Photon.Pun;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace IND.PlayerSys
@@ -36,7 +34,7 @@ namespace IND.PlayerSys
         private float horizontallNormalizedMoveAmount;
 
         #region Movement Inputs
-        private bool isPressingMovementKeys;
+        [HideInInspector] public bool isPressingMovementKeys;
         private bool rightMovementInput;
         private bool leftMovementInput;
         private bool forwardMovementInput;
@@ -61,7 +59,7 @@ namespace IND.PlayerSys
         private void Awake()
         {
             rigidBody = GetComponent<Rigidbody>();
-            cam = FindObjectOfType<CinemachineBrain>().GetComponent<Camera>(); 
+            cam = FindObjectOfType<CinemachineBrain>().GetComponent<Camera>();
             animController = GetComponent<PlayerAnimController>();
             inventoryController = GetComponent<PlayerInventoryController>();
             aimController = GetComponent<PlayerAimController>();
@@ -110,9 +108,9 @@ namespace IND.PlayerSys
             }
             else
             {
-                rigidBody.AddForce(Vector3.down * data.gravity); 
+                rigidBody.AddForce(Vector3.down * data.gravity);
             }
-           
+
             UpdateMovementAnims();
         }
 
@@ -397,7 +395,7 @@ namespace IND.PlayerSys
 
         public bool IsMovingInProne()
         {
-            if(postureState == PostureState.PRONE)
+            if (postureState == PostureState.PRONE)
             {
                 if (isPressingMovementKeys == true)
                 {
@@ -422,7 +420,7 @@ namespace IND.PlayerSys
             Destroy(standingHitbox.gameObject);
             Destroy(crouchedHitbox.gameObject);
             Destroy(proneHitbox.gameObject);
-           
+
             Destroy(this);
         }
     }

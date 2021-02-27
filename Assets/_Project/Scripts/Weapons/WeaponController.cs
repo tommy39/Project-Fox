@@ -28,6 +28,8 @@ namespace IND.Weapons
         private RaycastHit rayHit;
         private Vector3 rayDirection;
 
+        private AimRadiusController aimRadiusController;
+
         private void Awake()
         {
             photonView = GetComponent<PhotonView>();
@@ -50,6 +52,8 @@ namespace IND.Weapons
             if (photonView.IsMine == true)
             {
                 hudManager.AssignPlayer(invController);
+                aimRadiusController = aimController.aimRadiusController;
+                aimRadiusController.weaponController = this;
             }
         }
 
@@ -125,6 +129,8 @@ namespace IND.Weapons
             photonView.RPC("SendFireParticles", RpcTarget.All);
             StartCoroutine(StopWeaponFiringTimer());
             StartCoroutine(AttackCooldownTimer());
+            aimRadiusController.ForceSetCurrentRadius(weaponData.increaseAimRadiusWhenShotAmount);
+            aimRadiusController.ApplyContractionCooldown(weaponData.aimContractionCooldown);
             hasFireRateCooldown = true;
             rayDirection = aimController.aimTarget.position - shootpoint.position;
 
