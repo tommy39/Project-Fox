@@ -6,6 +6,7 @@ using IND.Weapons;
 using UnityEngine.UI;
 using TMPro;
 using Photon.Pun;
+using IND.Network;
 
 namespace IND.UI
 {
@@ -111,9 +112,13 @@ namespace IND.UI
 
         private void ConfirmLoadout()
         {
-            photonView.RPC("ChangeWeapon", RpcTarget.All);
+            photonView.RPC("ChangeWeapon", RpcTarget.AllBuffered);
             CloseInterface();
-            playerManager.SpawnPlayer();
+
+            if (ClientManager.LocalPlayerClientControllerInstance.data.characterController == null)
+            {
+                playerManager.SpawnPlayer();
+            }
         }
 
         [PunRPC]
