@@ -7,6 +7,7 @@ namespace IND.HittableSurfaces
     public class HittableSurfacesParticlePoolingManager : MonoBehaviour
     {
         public HittableSurfaceParticlePoolingItemController dirtParticles;
+        public HittableSurfaceParticlePoolingItemController bloodParticles;
 
         public static HittableSurfacesParticlePoolingManager singleton;
         private void Awake()

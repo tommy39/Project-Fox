@@ -5,6 +5,7 @@ using IND.UI;
 using Photon.Pun;
 using System.Collections;
 using UnityEngine;
+using Cinemachine;
 
 namespace IND.Weapons
 {
@@ -18,6 +19,7 @@ namespace IND.Weapons
         private PlayerAnimController animController;
         public PlayerAimController aimController;
         private GameplayHUDManager hudManager;
+
 
         [HideInInspector] public PhotonView photonView;
 
@@ -132,7 +134,7 @@ namespace IND.Weapons
             aimRadiusController.ForceSetCurrentRadius(weaponData.increaseAimRadiusWhenShotAmount);
             aimRadiusController.ApplyContractionCooldown(weaponData.aimContractionCooldown);
             hasFireRateCooldown = true;
-            rayDirection = aimController.aimTarget.position - shootpoint.position;
+            rayDirection = GetRayShootPoint();
 
             switch (weaponData.bulletType)
             {
@@ -146,6 +148,13 @@ namespace IND.Weapons
 
 
             hudManager.UpdateWeaponAmmoUI();
+        }
+
+        private Vector3 GetRayShootPoint()
+        {
+            Vector3 pointInAimCircle = aimRadiusController.GetPointInCurrentCircleRadius();
+
+            return pointInAimCircle - shootpoint.position;
         }
 
         [PunRPC]

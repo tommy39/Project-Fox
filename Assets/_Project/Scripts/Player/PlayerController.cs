@@ -12,6 +12,8 @@ namespace IND.PlayerSys
         public TeamType teamType;
         public ClientController clientController;
 
+        public Transform cameraHealthTrackerRayCastTarget;
+
         [SerializeField] private SkinnedMeshRenderer surfaceMesh;
         [SerializeField] private SkinnedMeshRenderer jointsMesh;
 
@@ -31,7 +33,7 @@ namespace IND.PlayerSys
             playerManager = PlayerManager.singleton;
             if (photonView.IsMine)
             {
-                cam = FindObjectOfType<CinemachineBrain>().GetComponent<Camera>();
+                cam = FindObjectOfType<CamController>().GetComponent<Camera>();
                 vcam = FindObjectOfType<CinemachineVirtualCamera>();
                 vcam.Follow = transform;
             }

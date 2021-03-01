@@ -13,7 +13,13 @@ namespace IND.UI
         private void Awake()
         {
             singleton = this;
-            cam = FindObjectOfType<CinemachineBrain>().GetComponent<Camera>();
+            cam = FindObjectOfType<CamController>().GetComponent<Camera>();
+        }
+
+        private void Start()
+        {
+            CloseElement();
+
         }
 
         public void UpdatePosition(Vector3 worldPos)

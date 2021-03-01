@@ -1,6 +1,7 @@
 using IND.UI;
 using Photon.Pun;
 using UnityEngine;
+using Cinemachine;
 
 namespace IND.PlayerSys
 {
@@ -21,6 +22,9 @@ namespace IND.PlayerSys
         private LineRenderer blockedAimTargetLineRenderer;
         private MeshRenderer aimTargetMeshRenderer;
         public AimRadiusController aimRadiusController;
+        private PlayerCameraAimController aimCameraController;
+        private CinemachineVirtualCamera virtualCam;
+        private CinemachineFramingTransposer framingTransposer;
 
         private PlayerInventoryController inventoryController;
         private PlayerMovementController movementController;
@@ -39,11 +43,12 @@ namespace IND.PlayerSys
         private void Awake()
         {
             inventoryController = GetComponent<PlayerInventoryController>();
-            cam = FindObjectOfType<Camera>();
+            cam = FindObjectOfType<CamController>().GetComponent<Camera>();
             animController = GetComponent<PlayerAnimController>();
             movementController = GetComponent<PlayerMovementController>();
             aimCursorUI = FindObjectOfType<AimCursorUIManager>();
             regularAimCursorController = FindObjectOfType<RegularAimCursorController>();
+            aimCameraController = GetComponent<PlayerCameraAimController>();
         }
 
         private void Start()
@@ -56,6 +61,8 @@ namespace IND.PlayerSys
             if (!photonView.IsMine)
                 return;
 
+            virtualCam = FindObjectOfType<CinemachineVirtualCamera>();
+            framingTransposer = virtualCam.GetCinemachineComponent<CinemachineFramingTransposer>();
             if (aimTarget == null)
             {
                 GameObject aimTargetGeo = Instantiate(aimTargetPrefab);
@@ -134,8 +141,6 @@ namespace IND.PlayerSys
                     ToggleAimState(true);
                 }
             }
-
-            aimCursorUI.UpdatePosition(aimTarget.position);
 
             if (isAiming == true)
             {
@@ -255,17 +260,34 @@ namespace IND.PlayerSys
             animController.SetAnimBool(PlayerAnimatorStatics.isAimingAnimBool, val);
             aimTargetMeshRenderer.gameObject.SetActive(false); //Currently Removed So Setting To False
             aimTargetLineRenderer.gameObject.SetActive(val);
-            aimCursorUI.gameObject.SetActive(val);
+
             aimRadiusController.ToggleRenderer(val);
 
             if (val == false)
             {
                 //  regularAimCursorController.gameObject.SetActive(true);
+                aimCameraController.SetCameraRegular(virtualCam, framingTransposer);
             }
             else
             {
                 //  regularAimCursorController.gameObject.SetActive(false);
+                aimCameraController.SetCameraAiming(virtualCam, framingTransposer);
             }
+        }
+               
+        public bool IsAimHittingGround()
+        {
+            Vector3 rayDir = aimTarget.position - inventoryController.weaponController.shootpoint.position;
+            RaycastHit hit;
+            if (Physics.Raycast(inventoryController.weaponController.shootpoint.position, rayDir, out hit, 100f, aimLayerMasks))
+            {
+                if(hit.transform.gameObject.layer == 11) // hit ground
+                {
+                    return true;
+                }
+                return false;
+            }
+            return false;
         }
 
         public void OnDeath()

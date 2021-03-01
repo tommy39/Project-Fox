@@ -18,12 +18,13 @@ namespace IND.PlayerSys
         [HideInInspector] public WeaponController weaponController;
 
         private float currentContractionCooldown = 0f;
-
+        [SerializeField] private Transform bulletPosGameObject;
+        private SphereCollider sphereCollider;
         private Vector3 targetRadiusVec;
 
         private float curRange;
+        private Vector3 posBeforeRotation;
 
-        private float applyableEffectiveRangeModifier;
         private float appliedEffectiveRangedModifier;
 
         public void AssignPlayer(PlayerAimController controller)
@@ -35,6 +36,7 @@ namespace IND.PlayerSys
 
         private void Start()
         {
+            sphereCollider = GetComponent<SphereCollider>();
             ToggleRenderer(false);
             data.ResetData();
             SetGameObjectSize(data.minRadiusSize);
@@ -54,8 +56,8 @@ namespace IND.PlayerSys
                 return;
             }
             UnApplyAnyModifiersNotNeeded();
-            CheckMovement();
             CheckEffectiveRange();
+            CheckMovement();
         }
 
         private void LateUpdate()
@@ -194,6 +196,9 @@ namespace IND.PlayerSys
         private void RotateToPlayer()
         {
             transform.LookAt(aimController.transform);
+            posBeforeRotation = aimController.transform.eulerAngles;
+            posBeforeRotation = new Vector3(0f, posBeforeRotation.y, posBeforeRotation.z);
+            transform.eulerAngles =posBeforeRotation;
         }
 
         private void SetGameObjectSize(float size)
@@ -242,7 +247,6 @@ namespace IND.PlayerSys
                     currentRadiusSize = data.minRadiusSize;
                 }
             }
-            Debug.Log(currentRadiusSize);
 
             targetRadiusVec = new Vector3(currentRadiusSize, currentRadiusSize, currentRadiusSize);
             gameObject.transform.localScale = new Vector3(currentRadiusSize, currentRadiusSize, currentRadiusSize);
@@ -280,52 +284,34 @@ namespace IND.PlayerSys
 
         private void ApplyEffectiveRangeModifier(float amount)
         {
-            if (amount > 0)
+            targetRadiusSize -= appliedEffectiveRangedModifier;
+
+            if(amount >= 0)
             {
-                float applyableAmount = 0f;
-
-                if (amount == appliedEffectiveRangedModifier)
-                    return;
-
-                //Get how much we have applied and how much we can apply in this frame if any. 
-                if (targetRadiusSize + applyableEffectiveRangeModifier > data.maxRadiusSize && amount >= applyableEffectiveRangeModifier) //Already over Limit
-                {
-                    return;
-                }
-                else //Under Limit
-                {
-                    applyableEffectiveRangeModifier = amount;
-                }
-
-                applyableAmount = amount - appliedEffectiveRangedModifier;
-
-
-                float totalRadius = targetRadiusSize + applyableAmount;
-                if (totalRadius > data.maxRadiusSize)
-                {
-                    float difference = totalRadius - data.maxRadiusSize;
-                    applyableAmount = applyableAmount - difference;
-                }
-
-                if (applyableAmount > 0)
-                {
-                    appliedEffectiveRangedModifier += applyableAmount;
-                    targetRadiusSize += applyableAmount;
-                }
-                else
-                {
-                    appliedEffectiveRangedModifier -= applyableAmount;
-                    targetRadiusSize -= applyableAmount;
-                }
-
-                //   Debug.Log(targetRadiusSize + " Target Radius");
-                Debug.Log(applyableAmount + " Applyable amount");
+                appliedEffectiveRangedModifier = amount;               
             }
-            else //Negative, Reduction, Remove Existing amount
+            else if(amount == -1)
             {
-                targetRadiusSize = targetRadiusSize - applyableEffectiveRangeModifier;
-                applyableEffectiveRangeModifier = 0;
+                appliedEffectiveRangedModifier = 0;
             }
+
+            targetRadiusSize += appliedEffectiveRangedModifier;               
+        }
+
+        public Vector3 GetPointInCurrentCircleRadius()
+        {
+            float radius = transform.localScale.x * sphereCollider.radius;
+            Vector2 pos = Random.insideUnitCircle * radius;
+            if(pos.y < 0)
+            {
+                if (aimController.IsAimHittingGround() == true)
+                {
+                    float invertedValue = Mathf.Abs(pos.y);
+                    pos = new Vector2(pos.x, invertedValue);
+                }
+            }
+            bulletPosGameObject.localPosition = new Vector3(pos.x, pos.y, bulletPosGameObject.localPosition.z);
+            return bulletPosGameObject.position;
         }
     }
 }

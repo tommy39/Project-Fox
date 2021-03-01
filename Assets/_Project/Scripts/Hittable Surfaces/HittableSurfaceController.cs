@@ -34,6 +34,7 @@ namespace IND.HittableSurfaces
                 case HittableSurfaceType.WOOD:
                     break;
                 case HittableSurfaceType.BLOOD:
+                    particleController = HittableSurfacesParticlePoolingManager.singleton.bloodParticles.GetPoolableObject();
                     break;
                 default:
                     break;

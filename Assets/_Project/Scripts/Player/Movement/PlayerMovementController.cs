@@ -59,7 +59,7 @@ namespace IND.PlayerSys
         private void Awake()
         {
             rigidBody = GetComponent<Rigidbody>();
-            cam = FindObjectOfType<CinemachineBrain>().GetComponent<Camera>();
+            cam = FindObjectOfType<CamController>().GetComponent<Camera>();
             animController = GetComponent<PlayerAnimController>();
             inventoryController = GetComponent<PlayerInventoryController>();
             aimController = GetComponent<PlayerAimController>();

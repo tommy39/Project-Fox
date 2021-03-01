@@ -31,7 +31,7 @@ namespace IND.Spectator
         private void Awake()
         {
             singleton = this;
-            gameCam = FindObjectOfType<CinemachineBrain>().GetComponent<Camera>();
+            gameCam = FindObjectOfType<CamController>().GetComponent<Camera>();
             virtualCam = FindObjectOfType<CinemachineVirtualCamera>();
         }
 
