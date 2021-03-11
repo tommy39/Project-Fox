@@ -53,7 +53,11 @@
     <UnityVersion>2020.2.1f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Assets\Photon\PhotonRealtime\Demos\DemoLoadBalancing\ConnectAndJoinRandomLb.cs" />
+    <Compile Include="Assets\_Project\Scripts\Camera\CamController.cs" />
     <Compile Include="Assets\_Project\Scripts\Spectator\SpectatorManager.cs" />
     <Compile Include="Assets\_Project\VFX\KriptoFX\MuzzleFlashes\Scripts\Rendering\FPS_UseLight.cs" />
     <Compile Include="Assets\_Project\Scripts\Hittable Surfaces\HittableSurfaceController.cs" />
@@ -92,6 +96,7 @@
     <Compile Include="Assets\_Project\Scripts\Network\ClientData.cs" />
     <Compile Include="Assets\_Project\Scripts\Player\PlayerLoadoutManager.cs" />
     <Compile Include="Assets\_Project\Scripts\UI\GameplayHUDManager.cs" />
+    <Compile Include="Assets\_Project\Scripts\Player\Aiming\PlayerCameraAimController.cs" />
     <Compile Include="Assets\_Project\VFX\KriptoFX\MuzzleFlashes\Scripts\Demo\FPSDemoGUI.cs" />
     <Compile Include="Assets\_Project\Scripts\Player\Aiming\AimRadiusController.cs" />
     <Compile Include="Assets\_Project\VFX\KriptoFX\BloodFX\Others\UVTextureAnimator.cs" />
@@ -136,6 +141,7 @@
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\FriendItem.cs" />
     <Compile Include="Assets\_Project\Scripts\UI\ChooseableWeaponSlotUIController.cs" />
     <Compile Include="Assets\_Project\Scripts\Teams\TeamSelectionUI.cs" />
+    <Compile Include="Assets\_Project\Scripts\Camera\AimRenderCamController.cs" />
     <Compile Include="Assets\_Project\Scripts\Network\ClientController.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatGui.cs" />
     <Compile Include="Assets\_Project\Scripts\Cursor\CursorManager.cs" />
@@ -149,9 +155,6 @@
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
     <Compile Include="Assets\_Project\Scripts\Player\PlayerStatics.cs" />
     <Compile Include="Assets\_Project\Scripts\Player\Health\HealthHitboxController.cs" />
-    <Compile Include="Assets\_Project\Scripts\Camera\CamController.cs" />
-    <Compile Include="Assets\_Project\Scripts\Camera\AimRenderCamController.cs" />
-    <Compile Include="Assets\_Project\Scripts\Player\Aiming\PlayerCameraAimController.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace IND.PlayerSys
 {
-    public class PlayerMovementController : MonoBehaviourPun
+    public class PlayerMovementController : MonoBehaviourPun, IPunObservable
     {
         public MovementData data;
         public PostureState postureState;
@@ -32,6 +32,9 @@ namespace IND.PlayerSys
 
         private float verticalNormalizedMoveAmount;
         private float horizontallNormalizedMoveAmount;
+
+        private Vector3 networkPosition;
+        private Quaternion networkRotation;
 
         #region Movement Inputs
         [HideInInspector] public bool isPressingMovementKeys;
@@ -81,6 +84,12 @@ namespace IND.PlayerSys
 
         private void FixedUpdate()
         {
+            if (!photonView.IsMine)
+            {
+                rigidBody.position = Vector3.MoveTowards(rigidBody.position, networkPosition, Time.fixedDeltaTime);
+                rigidBody.rotation = Quaternion.RotateTowards(rigidBody.rotation, networkRotation, Time.fixedDeltaTime * 100.0f);
+            }
+
             if (photonView.IsMine == false)
                 return;
 
@@ -112,6 +121,25 @@ namespace IND.PlayerSys
             }
 
             UpdateMovementAnims();
+        }
+
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            if (stream.IsWriting)
+            {
+                stream.SendNext(this.rigidBody.position);
+                stream.SendNext(this.rigidBody.rotation);
+                stream.SendNext(this.rigidBody.velocity);
+            }
+            else
+            {
+                networkPosition = (Vector3)stream.ReceiveNext();
+                networkRotation = (Quaternion)stream.ReceiveNext();
+                rigidBody.velocity = (Vector3)stream.ReceiveNext();
+
+                float lag = Mathf.Abs((float)(PhotonNetwork.Time - info.SentServerTime));
+                networkPosition += (this.rigidBody.velocity * lag);
+            }
         }
 
         private void HandleSprintInput()
