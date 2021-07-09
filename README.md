@@ -1,6 +1,8 @@
 # About
 Project Fox is a tactical top down shooter built in Unity that I created to learn about networking using the unity package ‘Photon Pun’. Its movement and shooting mechanics are inspired by the game ‘Foxhole’ coupled together in a multiplayer capture the flag/king of the hill styled game-mode.
 
+See a Live Demonstration - https://www.youtube.com/watch?v=AkXZb3aUc9w&ab_channel=ThomasMcLaughlin
+
 ## | Key Features
 
 **Multiplayer:** Comes with teams,friendly fire and a scoreboard showing each player's name, score and ping.
